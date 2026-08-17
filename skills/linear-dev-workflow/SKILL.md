@@ -9,14 +9,19 @@ Workspace: `linear.app/[WORKSPACE]`. Team: **[TRACKER_TEAM]**. Project: **[TRACK
 
 ## Before starting an issue
 
+0. **If no issue exists yet** for the chunk of work about to start, create one (`mcp__linear__create_issue`) at that moment, not after the fact — per [HARD_RULES_FILE]'s issue-tracker rules, every new feature, bug, and improvement goes through Linear, not just bugs.
 1. Pull the full issue with `mcp__linear__get_issue` (list views truncate descriptions) — don't work from a stale summary.
 2. Check whether it depends on one of this project's foundational blockers (list them here once they exist, e.g. infra setup, content/asset collection, design sign-off — with their own issue IDs). If the issue you're picking up assumes one of these is done, verify it actually is before starting — don't invent content or infrastructure to unblock yourself silently.
-3. Move the issue to "In Progress" **and set its assignee** in the same `mcp__linear__save_issue` call (`id` + `state` + `assignee`) so Linear reflects real status and real ownership, not just status.
+3. Move the issue to "In Progress" **and set its assignee** in the same `mcp__linear__save_issue` call (`id` + `state` + `assignee`) so Linear reflects real status and real ownership, not just status. **Never overwrite an assignee that's already set** — that person is on it; an unassigned issue is the actual failure, not one assigned to someone else.
 
 ## While working
 
 - If you discover missing scope while implementing, create a new issue rather than silently expanding the current one's scope. Attach it to the same team/project.
 - Reference related issue IDs in descriptions (e.g. "see [PREFIX]-24") rather than duplicating their content.
+- **Name the issue ID in commit messages** for anything that fixes or works toward it (e.g. `[PREFIX]-30: fix ...`), so it's clear from git log alone which commits are trying to fix what.
+- **PR descriptions get no "Test plan" checklist.** Whatever manual verification is still needed goes on the Linear issue instead (`mcp__linear__save_comment`), as real checkboxes, not prose in the PR body — see step 1 below.
+- If Linear's GitHub integration auto-transitions issues off PR state, **put the issue ID in the PR title itself**, not only the body or commit messages — that's usually what the integration matches on. Still worth a manual check after a merge, the automation can silently fail to match.
+- **Sync Linear the moment anything merges, whoever merged it.** When a `git pull`, `gh pr list`, or similar surfaces a PR that merged without you, check the matching issue then, not only when asked.
 
 ## Finishing an issue
 
