@@ -1,6 +1,6 @@
 # Current status
 
-Last updated: 2026-08-17
+Last updated: 2026-09-29
 
 ## What this repo is
 
@@ -23,7 +23,7 @@ this pass.
 - `test-runner.md` — writes and runs automated tests, verifies the build
 - `vault-scribe.md` — keeps a project's `vault/` up to date after real work
 
-**`skills/`** (10):
+**`skills/`** (11):
 - `git-checkpoint` — templated: checks whether now is a good commit/PR point
 - `linear-dev-workflow` — **kept concrete** (real Linear MCP calls), only identifiers templated — see [decision 0003](../decisions/0003-linear-stays-concrete.md)
 - `static-site-deploy` (was `loopia-deploy`) — templated static-hosting deploy checklist
@@ -34,14 +34,14 @@ this pass.
 - `content-page-family` (was `case-study-page`) — templated: pattern for a family of structurally-similar, content-different pages
 - `design-taste-frontend` — already fully generic (anti-slop frontend design guidance); untouched this pass
 - `redesign-skill` — already fully generic (redesign audit checklist); untouched this pass
+- `artifact-question-desk` — templated: the question-desk format for artifacts that need the user's input, with a working HTML template (added 2026-09-29)
 
 ## Just finished
 
-A full pass removing leftover specifics from a prior game project and a prior
-marketing-site project (real file paths, ticket prefixes, brand tokens,
-collaborator names) from every agent/skill except `linear-dev-workflow`
-(kept concrete on purpose) and the two skills that were already generic. See
-[progress/2026-08-17-initial-genericization.md](../progress/2026-08-17-initial-genericization.md).
+Added `skills/artifact-question-desk`: the question-desk format for artifacts
+that ask the user something, lifted from a Space Hex page the user called the
+best way yet to be asked questions. See
+[progress/2026-09-29-artifact-question-desk.md](../progress/2026-09-29-artifact-question-desk.md).
 
 ## Not yet done
 
