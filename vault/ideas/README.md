@@ -5,9 +5,6 @@ permanent like `decisions/` — prune an entry once it's built (note it in
 `progress/` instead) or once it's decided against (note why in
 `decisions/` if the "no" is itself worth remembering).
 
-- **`settings.json` / hooks starter template** — see open-questions.md for
-  the undecided scope; if this gets built, it's a new top-level file/folder
-  alongside `CLAUDE-template.md`.
 - **A generic `code-review-checklist` skill** — several project-specific
   audit agents exist (`seo-a11y-auditor`, `config-value-auditor`); a
   lighter-weight generic pre-merge checklist skill (not agent) might be
@@ -16,7 +13,11 @@ permanent like `decisions/` — prune an entry once it's built (note it in
   assumes static export + FTP-style hosting. A second deploy skill template
   for a containerized/serverless deploy shape would cover more project
   types.
-- **Example `.claude/agents` and `.claude/skills` folder layout note in the
-  root README** — currently the README explains what to copy where in
-  prose; a tiny ASCII tree showing the target project's resulting
-  `.claude/` layout might make the copy step faster to follow.
+- **Game-dev pack** — templates for a game project: a `game-design/` vault
+  seed with core loop / mechanics / tuning tables, a performance (frame
+  budget) agent, a playtest skill splitting measurable checks from "feel"
+  checkboxes, engine notes (Godot, Unity, Phaser). Bootstrap already asks
+  for the engine, so these can plug straight into round 12.
+- **Split `design-taste-frontend`** — 1206 lines, more than every other
+  template together; a short `SKILL.md` with reference files loaded on
+  demand would cost much less context.
