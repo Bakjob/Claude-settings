@@ -167,6 +167,10 @@ was diagnosing the real problem before writing code, not building the
 first request literally. Grill the choice, get a real answer, then build
 exactly what was confirmed.
 
+When the grilling is more than a few questions, or a plan published as an
+artifact still has open decisions, build that artifact with the
+`artifact-question-desk` skill, so the answers come back in one place.
+
 ---
 
 ## Clean code standard

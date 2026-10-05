@@ -1,0 +1,485 @@
+<title>[DESK_NAME]</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Restyle to the subject: swap these tokens and the font pair, keep the layout. */
+  :root {
+    color-scheme: dark;
+    --void: #0a0f1d;
+    --panel: #111a2e;
+    --panel-2: #16213a;
+    --line: #243152;
+    --text: #dbe5ff;
+    --muted: #8795ba;
+    --faint: #5b6890;
+    --accent: #4cc9f0;
+    --accent-soft: rgba(76, 201, 240, 0.14);
+    --yes: #5be39a;
+    --later: #f2c14e;
+    --no: #f2677b;
+    --display: "Chakra Petch", "Segoe UI", system-ui, sans-serif;
+    --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: radial-gradient(1200px 500px at 85% -10%, var(--accent-soft), transparent 60%), var(--void);
+    color: var(--text);
+    font: 15px/1.6 var(--body);
+    padding-inline: 16px;
+    padding-block: 0 64px;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; }
+  a { color: var(--accent); }
+  h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  header.top { padding-block: 40px 20px; display: grid; gap: 12px; }
+  .eyebrow { font: 500 12px/1 var(--mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+  h1 { font-size: clamp(30px, 6vw, 44px); font-weight: 700; letter-spacing: 0.01em; }
+  .lede { color: var(--muted); max-width: 62ch; margin: 0; }
+
+  .dock {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+    background: color-mix(in srgb, var(--void) 88%, transparent); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+    padding-block: 10px; margin-inline: -16px; padding-inline: 16px;
+  }
+  .dock-inner { max-width: 880px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; }
+  .meter { display: flex; align-items: center; gap: 8px; font: 500 13px var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+  .meter b { color: var(--text); font-weight: 500; }
+  .bar { width: 64px; height: 4px; border-radius: 2px; background: var(--line); overflow: hidden; }
+  .bar i { display: block; height: 100%; background: var(--accent); width: 0; transition: width .3s; }
+  .dock .spacer { flex: 1; }
+  .sync { font: 12px var(--mono); color: var(--faint); }
+  .sync.ok { color: var(--yes); }
+  .sync.warn { color: var(--later); }
+  button { font: inherit; cursor: pointer; }
+  .btn { border: 1px solid var(--line); background: var(--panel-2); color: var(--text); padding: 6px 12px; border-radius: 6px; font: 500 13px var(--body); }
+  .btn:hover { border-color: var(--accent); }
+  .btn.primary { background: var(--accent); color: var(--void); border-color: var(--accent); }
+  .btn.ghost { background: transparent; }
+
+  section.block { padding-block: 36px 8px; display: grid; gap: 16px; }
+  .block-head { display: grid; gap: 6px; }
+  .block-head h2 { font-size: 24px; font-weight: 600; }
+  .block-head p { margin: 0; color: var(--muted); max-width: 64ch; }
+  .tag { font: 500 12px var(--mono); color: var(--faint); }
+  .tag a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted var(--faint); }
+  .stack { display: grid; gap: 14px; }
+
+  .q { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 12px; }
+  .q.answered { border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+  .q-top { display: flex; gap: 12px; align-items: baseline; justify-content: space-between; flex-wrap: wrap; }
+  .q h3 { font-size: 18px; font-weight: 600; }
+  .q .ctx { margin: 0; color: var(--muted); font-size: 14px; max-width: 70ch; }
+  .opts { display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+  .opt { position: relative; }
+  .opt input { position: absolute; opacity: 0; pointer-events: none; }
+  .opt label { display: grid; gap: 2px; height: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel-2); cursor: pointer; }
+  .opt label b { font-weight: 600; font-size: 14px; }
+  .opt label span { color: var(--muted); font-size: 13px; line-height: 1.45; }
+  .opt label:hover { border-color: var(--faint); }
+  .opt input:checked + label { border-color: var(--accent); background: var(--accent-soft); }
+  .opt input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: 2px; }
+  textarea, input[type=text], select { width: 100%; background: var(--void); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 9px 11px; font: 14px/1.5 var(--body); resize: vertical; }
+  textarea::placeholder, input::placeholder { color: var(--faint); }
+  textarea:focus, input:focus, select:focus { border-color: var(--accent); outline: none; }
+  .done-chip { font: 500 12px var(--mono); padding: 2px 8px; border-radius: 99px; background: color-mix(in srgb, var(--yes) 14%, transparent); color: var(--yes); text-decoration: none; }
+
+  .ideas { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .idea { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: grid; gap: 10px; align-content: start; }
+  .idea[data-v=yes] { border-color: color-mix(in srgb, var(--yes) 50%, transparent); }
+  .idea[data-v=later] { border-color: color-mix(in srgb, var(--later) 45%, transparent); }
+  .idea[data-v=no] { opacity: 0.62; }
+  .idea h3 { font-size: 17px; font-weight: 600; }
+  .idea p { margin: 0; font-size: 14px; color: var(--muted); }
+  .idea .ask { font-size: 13px; color: var(--text); }
+  .meta { display: flex; gap: 10px; flex-wrap: wrap; font: 12px var(--mono); color: var(--faint); }
+  .seg { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .seg button { background: var(--panel-2); color: var(--muted); border: 0; padding: 7px 4px; font: 500 13px var(--body); }
+  .seg button + button { border-left: 1px solid var(--line); }
+  .seg button[aria-pressed=true][data-v=yes] { background: color-mix(in srgb, var(--yes) 18%, transparent); color: var(--yes); }
+  .seg button[aria-pressed=true][data-v=later] { background: color-mix(in srgb, var(--later) 16%, transparent); color: var(--later); }
+  .seg button[aria-pressed=true][data-v=no] { background: color-mix(in srgb, var(--no) 16%, transparent); color: var(--no); }
+
+  .pitch-form { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 12px; }
+  .row2 { display: grid; gap: 12px; grid-template-columns: 1fr 180px; }
+  .field { display: grid; gap: 4px; }
+  .field label { font: 500 12px var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .form-foot { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .hint { font-size: 13px; color: var(--faint); }
+  .pitches { display: grid; gap: 10px; }
+  .pitch { border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 8px; padding: 12px 14px; background: var(--panel); display: grid; gap: 4px; }
+  .pitch-top { display: flex; gap: 10px; align-items: baseline; justify-content: space-between; flex-wrap: wrap; }
+  .pitch h3 { font-size: 16px; font-weight: 600; }
+  .pitch p { margin: 0; font-size: 14px; color: var(--muted); white-space: pre-wrap; }
+  .pitch .acts { display: flex; gap: 8px; align-items: center; }
+  .empty { color: var(--faint); font-size: 14px; margin: 0; }
+  .copybox textarea { font: 12px/1.5 var(--mono); min-height: 160px; }
+
+  @media (max-width: 560px) { .row2 { grid-template-columns: 1fr; } .q, .pitch-form { padding: 14px; } }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="eyebrow">[PROJECT_NAME] · [DESK_KIND, e.g. vision desk / plan decisions]</div>
+    <h1>[PAGE_HEADLINE — what this round decides]</h1>
+    <p class="lede">[ONE_PARAGRAPH: what to do here, that everything saves as you go, and what Claude does with the answers afterwards]</p>
+  </header>
+</div>
+
+<div class="dock" role="status">
+  <div class="dock-inner">
+    <span class="meter">Questions <span class="bar"><i id="bar-q"></i></span><b id="n-q">0/0</b></span>
+    <span class="meter" id="meter-ideas">Ideas <span class="bar"><i id="bar-i"></i></span><b id="n-i">0/0</b></span>
+    <span class="meter">Pitches <b id="n-p">0</b></span>
+    <span class="spacer"></span>
+    <span class="sync" id="sync">Connecting…</span>
+    <button class="btn ghost" id="copy-btn" type="button">Copy as text</button>
+  </div>
+</div>
+
+<main class="wrap">
+  <div id="sections"></div>
+
+  <section class="block" id="ideas">
+    <div class="block-head">
+      <span class="tag">[IDEAS_SOURCE, e.g. docs/ideas/]</span>
+      <h2>Ideas to sort</h2>
+      <p><b>Yes</b> becomes real work. <b>Not yet</b> stays in the inbox. <b>No</b> is dropped.</p>
+    </div>
+    <div class="ideas" id="idea-grid"></div>
+  </section>
+
+  <section class="block" id="pitch">
+    <div class="block-head">
+      <span class="tag">new ideas → [TRACKER_NAME]</span>
+      <h2>New ideas</h2>
+      <p>Anything that isn't on this page yet. Write it roughly. Claude asks follow-up questions before it becomes real work.</p>
+    </div>
+    <form class="pitch-form" id="pitch-form" autocomplete="off">
+      <div class="row2">
+        <div class="field">
+          <label for="p-title">Title</label>
+          <input type="text" id="p-title" maxlength="140" placeholder="[EXAMPLE_PITCH_TITLE]" required>
+        </div>
+        <div class="field">
+          <label for="p-kind">Kind</label>
+          <select id="p-kind"></select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="p-what">What</label>
+        <textarea id="p-what" rows="3" placeholder="What happens? What does the user see and do?"></textarea>
+      </div>
+      <div class="field">
+        <label for="p-why">Why</label>
+        <textarea id="p-why" rows="2" placeholder="What does it serve? What's missing today?"></textarea>
+      </div>
+      <div class="form-foot">
+        <button class="btn primary" type="submit">Save idea</button>
+        <span class="hint" id="p-hint"></span>
+      </div>
+    </form>
+    <div class="pitches" id="pitch-list"></div>
+  </section>
+
+  <section class="block" id="copy" hidden>
+    <div class="block-head">
+      <h2>Answers as text</h2>
+      <p>Couldn't copy automatically. Select everything below and paste it into the chat.</p>
+    </div>
+    <div class="copybox"><textarea id="copy-out" readonly></textarea></div>
+  </section>
+</main>
+
+<script>
+// ---- Fill in: everything project-specific lives in these four constants. ----
+const ISSUE_URL_PREFIX = "[ISSUE_URL_PREFIX, e.g. https://github.com/OWNER/REPO/issues/]";
+const PITCH_KINDS = [["[KIND_ID]", "[KIND_LABEL]"], ["[KIND_ID_2]", "[KIND_LABEL_2]"]];
+
+// One entry per question section, most fundamental first. `n` is shown only
+// when it is set, so leave it out when the order carries no meaning.
+const SECTIONS = [
+  { id: "[SECTION_ID]", tag: "[SOURCE: issue link text or file path]", title: "[SECTION_HEADING]", intro: "[ONE_LINE_INTRO]",
+    questions: [
+      { id: "[QUESTION_ID]", n: 1, title: "[QUESTION_PHRASED_AS_A_QUESTION?]",
+        ctx: "[WHAT_IS_TRUE_TODAY, with file / decision / issue references]",
+        opts: [
+          ["[OPTION_ID]", "[OPTION_LABEL]", "[ONE_LINE_CONSEQUENCE]"],
+          ["[OPTION_ID_2]", "[OPTION_LABEL_2]", "[ONE_LINE_CONSEQUENCE — put a recommendation here as text, never preselect it]"] ] },
+    ] },
+];
+
+// Leave empty ([]) to hide the ideas section and its counter.
+const IDEAS = [
+  { id: "[IDEA_ID]", title: "[IDEA_TITLE]", size: "[SIZE]", area: "[AREA]",
+    pitch: "[ONE_OR_TWO_SENTENCE_PITCH]",
+    ask: "[THE_QUESTION_THAT_MUST_BE_ANSWERED_BEFORE_BUILDING_IT]" },
+];
+// ---- End of fill-in. ----
+
+const state = { answers: {}, ideas: {}, pitches: [] };
+const STORAGE_KEY = "question-desk:" + document.title;
+let db = null;
+const writeChains = {};
+const noteTimers = {};
+const KIND_LABEL = Object.fromEntries(PITCH_KINDS);
+
+function el(tag, attrs = {}, ...kids) {
+  const node = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === "class") node.className = v;
+    else if (k === "text") node.textContent = v;
+    else node.setAttribute(k, v);
+  }
+  for (const kid of kids) if (kid) node.append(kid);
+  return node;
+}
+
+function doneChip(result) {
+  if (!result) return null;
+  return el("a", { class: "done-chip", href: ISSUE_URL_PREFIX + result, target: "_blank", rel: "noopener", text: "→ #" + result });
+}
+
+function allQuestions() { return SECTIONS.flatMap(s => s.questions); }
+
+function debouncedNote(key, save) {
+  return (e) => {
+    clearTimeout(noteTimers[key]);
+    noteTimers[key] = setTimeout(() => save(e.target.value), 700);
+  };
+}
+
+function renderQuestion(q) {
+  const saved = state.answers[q.id] || {};
+  const box = el("article", { class: "q" + (saved.choice ? " answered" : "") });
+  const opts = el("div", { class: "opts", role: "radiogroup", "aria-label": q.title });
+  for (const [value, label, desc] of q.opts) {
+    const inputId = "r-" + q.id + "-" + value;
+    const input = el("input", { type: "radio", name: q.id, id: inputId, value });
+    if (saved.choice === value) input.checked = true;
+    input.addEventListener("change", () => saveAnswer(q.id, { choice: value }));
+    opts.append(el("div", { class: "opt" }, input,
+      el("label", { for: inputId }, el("b", { text: label }), el("span", { text: desc }))));
+  }
+  const note = el("textarea", { id: "note-" + q.id, rows: "2", placeholder: "Your own thoughts, or an answer none of the options fits…" });
+  note.value = saved.note || "";
+  note.addEventListener("input", debouncedNote("q" + q.id, v => saveAnswer(q.id, { note: v })));
+  box.append(
+    el("div", { class: "q-top" }, el("h3", { text: (q.n != null ? q.n + ". " : "") + q.title }), doneChip(saved.issue)),
+    el("p", { class: "ctx", text: q.ctx }), opts, note);
+  return box;
+}
+
+function renderSection(s) {
+  return el("section", { class: "block", id: s.id },
+    el("div", { class: "block-head" },
+      el("span", { class: "tag", text: s.tag }), el("h2", { text: s.title }), el("p", { text: s.intro })),
+    el("div", { class: "stack" }, ...s.questions.map(renderQuestion)));
+}
+
+function renderIdea(idea) {
+  const saved = state.ideas[idea.id] || {};
+  const seg = el("div", { class: "seg", role: "group", "aria-label": "Verdict for " + idea.title });
+  for (const [v, label] of [["yes", "Yes"], ["later", "Not yet"], ["no", "No"]]) {
+    const b = el("button", { type: "button", "data-v": v, "aria-pressed": String(saved.verdict === v), text: label });
+    b.addEventListener("click", () => saveIdea(idea.id, { verdict: saved.verdict === v ? "" : v }));
+    seg.append(b);
+  }
+  const note = el("textarea", { id: "idea-note-" + idea.id, rows: "2", placeholder: "Answer to the question, or a condition…" });
+  note.value = saved.note || "";
+  note.addEventListener("input", debouncedNote("i" + idea.id, v => saveIdea(idea.id, { note: v })));
+  return el("article", { class: "idea", "data-v": saved.verdict || "" },
+    el("div", { class: "meta" }, el("span", { text: "#" + idea.id }), el("span", { text: idea.area }), el("span", { text: idea.size }), doneChip(saved.issue)),
+    el("h3", { text: idea.title }), el("p", { text: idea.pitch }), el("p", { class: "ask", text: idea.ask }),
+    seg, note);
+}
+
+function renderPitches() {
+  const list = document.getElementById("pitch-list");
+  list.replaceChildren();
+  if (!state.pitches.length) {
+    list.append(el("p", { class: "empty", text: "No ideas yet. The first one ends up here." }));
+    return;
+  }
+  for (const p of state.pitches) {
+    const del = el("button", { class: "btn ghost", type: "button", text: "Delete" });
+    del.addEventListener("click", () => {
+      if (del.dataset.armed) return removePitch(p.id);
+      del.dataset.armed = "1";
+      del.textContent = "Sure? Click again";
+      setTimeout(() => { delete del.dataset.armed; del.textContent = "Delete"; }, 3000);
+    });
+    const body = [p.what, p.why ? "Why: " + p.why : ""].filter(Boolean).join("\n\n");
+    list.append(el("article", { class: "pitch" },
+      el("div", { class: "pitch-top" }, el("h3", { text: p.title }),
+        el("div", { class: "acts" }, el("span", { class: "tag", text: KIND_LABEL[p.kind] || p.kind }), doneChip(p.issue), p.issue ? null : del)),
+      body ? el("p", { text: body }) : null));
+  }
+}
+
+function renderAll() {
+  const active = document.activeElement;
+  const focusId = active && active.id;
+  const caret = focusId && active.selectionStart;
+  document.getElementById("sections").replaceChildren(...SECTIONS.map(renderSection));
+  document.getElementById("idea-grid").replaceChildren(...IDEAS.map(renderIdea));
+  renderPitches();
+  renderMeters();
+  const again = focusId && document.getElementById(focusId);
+  if (again) { again.focus(); if (caret != null && again.setSelectionRange) try { again.setSelectionRange(caret, caret); } catch (_) {} }
+}
+
+function renderMeters() {
+  const qs = allQuestions();
+  const answered = qs.filter(q => state.answers[q.id]?.choice || state.answers[q.id]?.note?.trim()).length;
+  const sorted = IDEAS.filter(i => state.ideas[i.id]?.verdict).length;
+  document.getElementById("n-q").textContent = answered + "/" + qs.length;
+  document.getElementById("bar-q").style.width = (qs.length ? 100 * answered / qs.length : 0) + "%";
+  document.getElementById("n-i").textContent = sorted + "/" + IDEAS.length;
+  document.getElementById("bar-i").style.width = (IDEAS.length ? 100 * sorted / IDEAS.length : 0) + "%";
+  document.getElementById("n-p").textContent = state.pitches.length;
+}
+
+function setSync(text, kind) {
+  const s = document.getElementById("sync");
+  s.textContent = text;
+  s.className = "sync" + (kind ? " " + kind : "");
+}
+
+function queueWrite(path, body) {
+  const prev = writeChains[path] || Promise.resolve();
+  writeChains[path] = prev.then(() => db.doc(path).set(body)).then(
+    () => setSync("Saved", "ok"),
+    () => setSync("Couldn't save. Try again.", "warn"));
+}
+
+function saveLocal() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (_) {}
+}
+
+// Merges into the saved document so fields Claude wrote (e.g. `issue`) survive.
+function saveDoc(bucket, collection, id, patch, structural) {
+  const body = { ...(state[bucket][id] || {}), ...patch, updatedAt: new Date().toISOString() };
+  state[bucket][id] = body;
+  if (structural) renderAll(); else renderMeters();
+  if (db) { setSync("Saving…"); queueWrite(collection + "/" + id, body); } else saveLocal();
+}
+
+function saveAnswer(id, patch) { saveDoc("answers", "answers", id, patch, patch.choice !== undefined); }
+function saveIdea(id, patch) { saveDoc("ideas", "ideas", id, patch, patch.verdict !== undefined); }
+
+async function removePitch(id) {
+  state.pitches = state.pitches.filter(p => p.id !== id);
+  renderPitches(); renderMeters();
+  if (!db) return saveLocal();
+  try { await db.doc("pitches/" + id).delete(); setSync("Deleted", "ok"); } catch (_) { setSync("Couldn't delete", "warn"); }
+}
+
+document.getElementById("pitch-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const title = document.getElementById("p-title").value.trim();
+  if (!title) return;
+  const pitch = {
+    title,
+    kind: document.getElementById("p-kind").value,
+    what: document.getElementById("p-what").value.trim(),
+    why: document.getElementById("p-why").value.trim(),
+    createdAt: new Date().toISOString(),
+  };
+  const hint = document.getElementById("p-hint");
+  if (db) {
+    try {
+      await db.collection("pitches").add(pitch);
+      hint.textContent = "Saved. Claude will pick it up.";
+    } catch (err) {
+      hint.textContent = err && err.code === "quota_exceeded" ? "The database is full. Delete old ideas." : "Couldn't save. Try again.";
+      return;
+    }
+  } else {
+    state.pitches.unshift({ ...pitch, id: "local-" + Date.now() });
+    saveLocal(); renderPitches(); renderMeters();
+    hint.textContent = "Saved in this browser only. Use \"Copy as text\" to send it.";
+  }
+  e.target.reset();
+});
+
+function summaryText() {
+  const lines = ["# " + document.title + ": answers", ""];
+  for (const s of SECTIONS) {
+    lines.push("## " + s.title);
+    for (const q of s.questions) {
+      const a = state.answers[q.id];
+      if (!a || (!a.choice && !a.note)) continue;
+      const opt = q.opts.find(o => o[0] === a.choice);
+      lines.push("- " + q.title + ": " + (opt ? opt[1] : "(no choice)") + (a.note ? " — " + a.note : ""));
+    }
+    lines.push("");
+  }
+  if (IDEAS.length) {
+    lines.push("## Ideas");
+    const V = { yes: "YES", later: "NOT YET", no: "NO" };
+    for (const i of IDEAS) {
+      const s = state.ideas[i.id];
+      if (!s || (!s.verdict && !s.note)) continue;
+      lines.push("- #" + i.id + " " + i.title + ": " + (V[s.verdict] || "?") + (s.note ? " — " + s.note : ""));
+    }
+    lines.push("");
+  }
+  lines.push("## New ideas");
+  for (const p of state.pitches) lines.push("- [" + (KIND_LABEL[p.kind] || p.kind) + "] " + p.title + (p.what ? ": " + p.what : "") + (p.why ? " (why: " + p.why + ")" : ""));
+  return lines.join("\n");
+}
+
+document.getElementById("copy-btn").addEventListener("click", () => {
+  const text = summaryText();
+  const fallback = () => {
+    const box = document.getElementById("copy");
+    box.hidden = false;
+    const out = document.getElementById("copy-out");
+    out.value = text; out.focus(); out.select();
+    box.scrollIntoView({ block: "center" });
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => setSync("Copied to clipboard", "ok"), fallback);
+  } else fallback();
+});
+
+function docsToMap(snap) {
+  const map = {};
+  for (const d of snap.docs) map[d.id] = { ...d.data() };
+  return map;
+}
+
+function isTyping() {
+  const a = document.activeElement;
+  return a && (a.tagName === "TEXTAREA" || a.tagName === "INPUT");
+}
+
+async function connect() {
+  document.getElementById("p-kind").replaceChildren(...PITCH_KINDS.map(([v, label]) => el("option", { value: v, text: label })));
+  document.getElementById("ideas").hidden = IDEAS.length === 0;
+  document.getElementById("meter-ideas").hidden = IDEAS.length === 0;
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+    if (saved) Object.assign(state, saved);
+  } catch (_) {}
+  renderAll();
+  db = await (window.claude?.use ? window.claude.use("db") : Promise.resolve(null));
+  if (!db) { setSync("Saved in this browser only", "warn"); return; }
+  setSync("Connected", "ok");
+  const onError = () => setSync("Lost connection to the database", "warn");
+  const rerender = () => { if (isTyping()) renderMeters(); else renderAll(); };
+  db.collection("answers").onSnapshot(snap => { state.answers = docsToMap(snap); rerender(); }, onError);
+  db.collection("ideas").onSnapshot(snap => { state.ideas = docsToMap(snap); rerender(); }, onError);
+  db.collection("pitches").orderBy("createdAt", "desc").onSnapshot(snap => {
+    state.pitches = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    renderPitches(); renderMeters();
+  }, onError);
+}
+
+connect();
+</script>

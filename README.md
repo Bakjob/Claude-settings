@@ -55,6 +55,7 @@ Copy the ones relevant to a project into `.claude/skills/`.
 | `content-page-family` | Pattern for a family of pages that share structure but differ in content (case studies, product pages, per-item doc pages). |
 | `design-taste-frontend` | Anti-slop frontend design skill for landing pages/portfolios/redesigns — infers a design direction from the brief and pushes back on default LLM aesthetics. Already fully generic, use as-is. |
 | `redesign-skill` | Audit-first checklist for upgrading an existing site's design (typography, color, layout, states, content) without breaking functionality. Already fully generic, use as-is. |
+| `artifact-question-desk` | The default shape for any claude.ai Artifact that asks the user something: progress counters and Copy as text on top, multiple-choice questions with context, ideas to sort, and a new-ideas form at the bottom, auto-saved to the artifact's db so Claude reads the answers back. Ships a working `question-desk.html` template. |
 
 ## How to use this in a new project
 
