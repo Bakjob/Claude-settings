@@ -1,9 +1,9 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "bakjob",
-  "description": "Jakob's personal Claude Code plugins.",
+  "description": "Claude Code plugins by Bakjob.",
   "owner": {
-    "name": "Jakob"
+    "name": "Bakjob"
   },
   "plugins": [
     {
