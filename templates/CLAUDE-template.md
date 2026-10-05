@@ -72,10 +72,16 @@ a drift.
 
 ## Issue tracker
 
+*(Written for a tracker with states and assignees: Linear, GitHub Issues
+with `in progress` / `in review` labels, Jira. With no tracker at all, the
+bootstrap skill replaces this whole section with a short todo-list variant.)*
+
 **Every new feature, bug, and improvement goes through [ISSUE_TRACKER]**
-(workspace/project: [TRACKER_WORKSPACE], team: [TRACKER_TEAM]), not just
-bugs, not in the docs, not in a file in this repo. Labels distinguish the
-kinds of work; the workflow below is identical for all of them.
+([TRACKER_LOCATION], e.g. Linear workspace and team, or a GitHub repo), not
+just bugs, not in the docs, not in a file in this repo. Labels distinguish
+the kinds of work; the workflow below is identical for all of them.
+Day-to-day mechanics (exact commands, state names) live in
+[TRACKER_WORKFLOW_SKILL].
 
 - **Starting a real chunk of new work creates the issue**, if one doesn't
   already exist, at the moment work begins, not after.
@@ -252,13 +258,16 @@ Invoke these directly instead of re-deriving their logic each time.]
 
 ## Filling in this template for a new project
 
-Replace every bracketed placeholder above, then delete this section:
+The `bootstrap` skill (`skills/bootstrap/` in the library) does all of this
+by interviewing you first. By hand: replace every bracketed placeholder
+above, then delete this section:
 
 - `[PROJECT_NAME]`, elevator pitch
 - `[LANGUAGE]` (drop the section entirely if not applicable)
 - `[DOCS_DIR]` (e.g. `vault/`, `docs/`, `notes/`), `[HARD_RULES_FILE]`,
   `[RUNNING_FILE]`
-- `[ISSUE_TRACKER]`, `[TRACKER_WORKSPACE]`, `[TRACKER_TEAM]`
+- `[ISSUE_TRACKER]`, `[TRACKER_LOCATION]`, `[TRACKER_WORKFLOW_SKILL]`
+  (`linear-dev-workflow`, `github-issues-workflow`, or the line dropped)
 - `[PR_TITLE_CONVENTION]` (or delete that bullet if the project has none)
 - The "Configurable options" and "Agents and skills" sections, once the
   project actually has those things.

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "bakjob",
+  "description": "Jakob's personal Claude Code plugins.",
+  "owner": {
+    "name": "Jakob"
+  },
+  "plugins": [
+    {
+      "name": "bakjob-kickstart",
+      "description": "Interview-driven project bootstrap: asks about version control, issue tracking, language, stack and workflow, then writes CLAUDE.md, .claude/agents, .claude/skills, vault/ and .claude/settings.json.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}

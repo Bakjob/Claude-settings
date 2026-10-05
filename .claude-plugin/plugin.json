@@ -1,0 +1,9 @@
+{
+  "name": "bakjob-kickstart",
+  "version": "0.1.0",
+  "description": "Bootstraps a new project's Claude Code setup (CLAUDE.md, agents, skills, vault, settings) by interviewing you about version control, issue tracking, language, stack and workflow.",
+  "author": {
+    "name": "Jakob"
+  },
+  "repository": "https://github.com/Bakjob/Claude-settings"
+}
