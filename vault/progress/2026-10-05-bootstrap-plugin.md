@@ -31,7 +31,7 @@
 ## Why
 
 The user pastes the whole library into each new project and lets Claude
-generate from it, and wanted Claude to ask "massor av frågor" about the
+generate from it, and wanted Claude to ask "lots of questions" about the
 project's setup (version control, issue handling, language, and so on)
 instead of guessing. They also wanted Linear not to be hardcoded.
 

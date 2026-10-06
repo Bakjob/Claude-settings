@@ -1,6 +1,6 @@
 ---
 name: bootstrap
-description: Set up Claude Code for a new (or existing) project by interviewing the user first: project type and stack, languages, version control, issue tracking, testing, docs/vault, how Claude should work, then generating CLAUDE.md, .claude/agents, .claude/skills, vault/ and .claude/settings.json from the library's templates. Use when the user says "bootstrap", "set up this project", "sätt upp projektet", or pastes this library into a project folder and asks Claude to use it.
+description: Set up Claude Code for a new (or existing) project by interviewing the user first: project type and stack, languages, version control, issue tracking, testing, docs/vault, how Claude should work, then generating CLAUDE.md, .claude/agents, .claude/skills, vault/ and .claude/settings.json from the library's templates. Use when the user says "bootstrap", "set up this project" (in any language), or pastes this library into a project folder and asks Claude to use it.
 ---
 
 # Bootstrap a project
@@ -47,7 +47,7 @@ Confirm `TARGET` with the user in round 1 before writing anything.
 3. **Summary and confirmation.** Show every answer as one table, then the
    exact list of files that will be created or changed, plus any outward
    action (creating GitHub labels, creating a remote repo). Ask
-   "Generera / Ändra något". Nothing is written before a yes.
+   "Generate / Change something". Nothing is written before a yes.
 
 4. **Generate.** Follow [generate.md](generate.md).
 

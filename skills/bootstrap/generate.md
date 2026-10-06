@@ -18,12 +18,12 @@ Start from `LIB/templates/CLAUDE-template.md` and write `TARGET/CLAUDE.md`:
   commits) plus the chat language. Drop the em dash line if the user dropped
   that rule.
 - **Issue tracker:** pick the variant in section 5 below.
-- **Push back:** "Grilla mig" keeps the section as is. "Säg till vid tydliga
-  problem" shortens it to the first paragraph. "Bygg det jag säger" replaces
+- **Push back:** "Grill me" keeps the section as is. "Flag clear problems"
+  shortens it to the first paragraph. "Build what I say" replaces
   it with one line: flag a conflict with a decision or hard rule once, then
   build what was asked. Drop the `artifact-question-desk` sentence if the
   user chose terminal questions.
-- **Clean code:** keep it for "Mallens standard"; for "Lättare", keep only
+- **Clean code:** keep it for "The template's clean code standard"; for "Lighter", keep only
   the names, no-dead-code and comments-explain-why bullets.
 - **Git workflow:** rewrite the bullets to match the answers, not the
   template's defaults: branch strategy, who merges, what Claude may do
@@ -36,12 +36,12 @@ Start from `LIB/templates/CLAUDE-template.md` and write `TARGET/CLAUDE.md`:
 
 ## 2. Vault
 
-Skip if Vault = Ingen (then `DOCS` is just a folder for `hard-rules.md` and
+Skip if Vault = None (then `DOCS` is just a folder for `hard-rules.md` and
 `running.md`, default `docs/`).
 
 Copy `LIB/templates/vault/` to `TARGET/DOCS`, fill its placeholders, then:
 
-- **Lätt:** delete `progress/` mentions from `README.md` and don't create the
+- **Light:** delete `progress/` mentions from `README.md` and don't create the
   folder.
 - **Full:** create `progress/YYYY-MM-DD-bootstrap.md` (today's date) with the
   whole answer sheet as a table, so a later session can see why the setup
@@ -96,11 +96,11 @@ gh label create "in progress" --color FBCA04 --description "Someone is working o
 gh label create "in review" --color 0E8A16 --description "Merged, waiting for a human to verify" -R OWNER/REPO
 ```
 
-**Simple flow (any tracker).** If Flöde = Enkel, replace the "test loop" and
+**Simple flow (any tracker).** If Flow = Simple, replace the "test loop" and
 "In Review loop" parts with: an issue closes when its PR merges; PRs use
 `Closes #N` (GitHub) or the tracker's equivalent.
 
-**Ingen tracker.** Replace the whole "Issue tracker" section with:
+**No tracker.** Replace the whole "Issue tracker" section with:
 
 ```markdown
 ## Todos
@@ -113,24 +113,24 @@ progress entry records them.
 
 and create `DOCS/status/todo.md` with a heading and an empty list.
 
-**Annan.** Keep the generic tracker section with the tool's names filled in,
+**Other.** Keep the generic tracker section with the tool's names filled in,
 no workflow skill. Add "a workflow skill for TOOL" to open questions.
 
 ## 6. .claude/settings.json
 
 Write `TARGET/.claude/settings.json`. Merge into an existing one instead of
-replacing it. Build `permissions` from Behörigheter:
+replacing it. Build `permissions` from Permissions:
 
-- **Generös:** allow the package manager's install/build/test/lint/format
+- **Generous:** allow the package manager's install/build/test/lint/format
   commands, `git status`, `git diff`, `git log`, `git add`, `git commit`,
   `git checkout`, `git switch`, `git branch`, plus `git push` and
-  `gh pr create` if Autonomi allows pushing.
+  `gh pr create` if Autonomy allows pushing.
 - **Standard:** allow only the read-only and build/test commands.
-- **Försiktig:** allow nothing extra.
+- **Careful:** allow nothing extra.
 - Always deny `Bash(git push --force:*)`, `Bash(git push -f:*)`,
   `Read(./.env)` and `Read(./.env.*)`.
 
-If Formatter = Ja, add a hook that formats each file Claude edits (needs
+If Formatter = Yes, add a hook that formats each file Claude edits (needs
 `jq`; check `command -v jq` first and tell the user if it's missing):
 
 ```json
@@ -163,7 +163,7 @@ format` (Unity/C#), `cargo fmt` (Rust).
 - `.gitignore` for the stack (node_modules, build output, `.env*`; Godot
   `.godot/`; Unity `Library/ Temp/ Obj/ Build/ Logs/ UserSettings/`; Rust
   `target/`). Merge with an existing one.
-- If LFS = Ja: `.gitattributes` tracking the stack's binary asset types
+- If LFS = Yes: `.gitattributes` tracking the stack's binary asset types
   (images, audio, models, fonts). Check `git lfs version` first.
 - If Host is set and there is no repo yet: `git init`. Creating a remote
   (`gh repo create`) only if the user approved it in the summary.
@@ -171,4 +171,4 @@ format` (Unity/C#), `cargo fmt` (Rust).
   typecheck, test and build from `running.md` on `pull_request`.
 - First commit, in the commit language and style chosen, on the branch the
   git workflow says (main for the initial setup is fine). Push only if
-  Autonomi allows it.
+  Autonomy allows it.
