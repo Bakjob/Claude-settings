@@ -1,0 +1,54 @@
+{
+  "extraKnownMarketplaces": {
+    "bakjob": {
+      "source": {
+        "source": "github",
+        "repo": "Bakjob/Claude-settings"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "bakjob-core@bakjob": true,
+    "bakjob-github@bakjob": true,
+    "bakjob-game@bakjob": true
+  },
+  "permissions": {
+    "allow": [
+      "Bash(godot --headless:*)",
+      "Bash(gdformat:*)",
+      "Bash(gdlint:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git checkout:*)",
+      "Bash(git switch:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(gh issue:*)",
+      "Bash(gh pr create:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr list:*)"
+    ],
+    "deny": [
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Read(./.env)",
+      "Read(./.env.*)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path' | grep '\\.gd$' | xargs -r gdformat"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+# Godot
+.godot/
+*.translation
+export_presets.cfg.bak
+
+# Builds
+build/
+
+# Secrets
+.env
+.env.*
