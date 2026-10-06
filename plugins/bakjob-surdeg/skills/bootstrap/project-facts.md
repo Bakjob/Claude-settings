@@ -45,7 +45,10 @@ One section per command group, each with the exact command:
 - `## Smoke test`: command, run-length options or flags, any prep step
   needed first, and one line per check: its name, its pass criterion, and
   the file or subsystem it points at when it fails
-- `## Deploy`: platform or host, the project/app name on it, production
+- `## Deploy`: for games, the release targets instead: itch.io `user/game`
+  and channels, Steam app and depot IDs and where the SteamPipe scripts live,
+  export presets per platform, version scheme (used by `game-release`). For
+  web: platform or host, the project/app name on it, production
   domain and branch, the environment variable names (never values) and
   where they're set, deploy and rollback steps, and post-launch steps
   (search console). Used by `static-site-deploy` and `web-deploy`.
@@ -56,6 +59,12 @@ The SEO, accessibility and performance bar `seo-a11y-auditor` checks
 against: Lighthouse thresholds and which pages, WCAG version and level,
 meta title convention, JSON-LD schemas per page type, and where the targets
 came from (a brief, an issue).
+
+## `DOCS/quality-targets.md` (game projects)
+
+The bar `performance-auditor` checks against: target platforms and minimum
+spec, target frame rate (the frame budget follows from it), memory and
+load-time budgets.
 
 ## `DOCS/design/page-families.md` (web projects with repeated page types)
 

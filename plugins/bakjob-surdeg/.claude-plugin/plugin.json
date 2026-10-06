@@ -1,6 +1,6 @@
 {
   "name": "bakjob-surdeg",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Sourdough starter for new projects: the bootstrap skill interviews you about stack, languages, version control, issue tracking, testing and workflow, then writes CLAUDE.md, a vault and .claude/settings.json and enables the right bakjob plugins for the project.",
   "author": {
     "name": "Bakjob"

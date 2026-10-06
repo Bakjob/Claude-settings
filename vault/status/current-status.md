@@ -10,9 +10,9 @@ how to install and use it.
 
 ## What's in it
 
-Five plugins under `plugins/` ([decision 0008](../decisions/0008-per-project-plugins-read-project-files.md)):
+Six plugins under `plugins/` ([decision 0008](../decisions/0008-per-project-plugins-read-project-files.md)):
 
-- **`bakjob-surdeg`** (0.2.0, installed per user): `bootstrap`, with
+- **`bakjob-surdeg`** (0.3.0, installed per user): `bootstrap`, with
   `SKILL.md` (flow), `questions.md` (13 interview rounds), `generate.md`
   (what each answer writes), `project-facts.md` (where the other plugins
   look things up), and its own templates `CLAUDE-template.md` and
@@ -24,9 +24,12 @@ Five plugins under `plugins/` ([decision 0008](../decisions/0008-per-project-plu
 - **`bakjob-github`** (0.1.0, per project): `github-issues-workflow`.
 - **`bakjob-linear`** (0.1.0, per project): `linear-dev-workflow`, kept
   concrete ([decision 0003](../decisions/0003-linear-stays-concrete.md)).
-- **`bakjob-web`** (0.1.0, per project): skills `design-taste-frontend`,
-  `redesign-skill`, `content-page-family`, `static-site-deploy`; agent
-  `seo-a11y-auditor`.
+- **`bakjob-web`** (0.3.0, per project): skills `design-taste-frontend`
+  (short `SKILL.md` + `references/`), `redesign-skill`,
+  `content-page-family`, `static-site-deploy`, `web-deploy`, `visual-check`;
+  agent `seo-a11y-auditor`.
+- **`bakjob-game`** (0.1.0, per project): skills `engine-conventions`,
+  `playtest`, `game-release`; agent `performance-auditor`.
 
 No skill outside bootstrap's own templates has placeholders; they read
 project values from the project's files. This repo enables `bakjob-github`
@@ -34,9 +37,9 @@ for itself in `.claude/settings.json`.
 
 ## Just finished
 
-Split into per-project plugins and removed placeholders from every shared
-skill (#5, #13), on top of making the whole repo English (#11). See
-[progress/2026-10-06-plugin-split.md](../progress/2026-10-06-plugin-split.md).
+The first backlog, as stacked PRs #19-#22: `design-taste-frontend` split
+(#15), `web-deploy` (#16), `visual-check` (#17) and the `bakjob-game` plugin
+(#18). See [progress/2026-10-06-backlog.md](../progress/2026-10-06-backlog.md).
 
 ## Waiting on
 
