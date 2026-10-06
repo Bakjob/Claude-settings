@@ -87,8 +87,9 @@ that it merged.
 
 ## The plugins
 
-The `bakjob` marketplace has one plugin you install for yourself and four
-that bootstrap turns on per project, so a game never loads web tools:
+The `bakjob` marketplace has one plugin you install for yourself and five
+that bootstrap turns on per project, so a game never loads web tools and a
+website never loads game tools:
 
 | Plugin | Installed | What it brings |
 |---|---|---|
@@ -96,7 +97,8 @@ that bootstrap turns on per project, so a game never loads web tools:
 | `bakjob-core` | per project | git checkpoints, vault upkeep and decision records, smoke tests, a test runner, an architect for hard plans, a config-value auditor, the question desk artifact |
 | `bakjob-github` | per project, GitHub Issues | the issue → PR → review loop with `gh` |
 | `bakjob-linear` | per project, Linear | the same loop through Linear MCP |
-| `bakjob-web` | per project, web | SEO/accessibility/performance audits, frontend design, redesign audits, families of similar pages, static-site deploy |
+| `bakjob-game` | per project, games | engine rules for Godot / Unity / Phaser / Bevy, a performance auditor against your frame budget, playtests that split provable checks from feel, releases to itch.io and Steam |
+| `bakjob-web` | per project, web | SEO/accessibility/performance audits, before/after screenshots of UI changes, frontend design, redesign audits, families of similar pages, deploys to Vercel / Netlify / Cloudflare Pages / containers / FTP |
 
 None of them hold project-specific values. They read them from your
 project's `CLAUDE.md` and `vault/` (commands from `vault/running.md`, rules

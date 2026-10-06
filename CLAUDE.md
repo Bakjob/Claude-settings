@@ -4,10 +4,10 @@
 into another project to bootstrap it, ignore this file and follow
 `BOOTSTRAP.md` instead.*
 
-A Claude Code marketplace (`bakjob`) with five plugins under `plugins/`:
+A Claude Code marketplace (`bakjob`) with six plugins under `plugins/`:
 `bakjob-surdeg` (the `bootstrap` skill, which interviews the user about a new
 project and writes its setup) and the per-project plugins `bakjob-core`,
-`bakjob-github`, `bakjob-linear` and `bakjob-web`. Their skills hold no
+`bakjob-github`, `bakjob-linear`, `bakjob-web` and `bakjob-game`. Their skills hold no
 project values; they read them from the project's files, as
 `plugins/bakjob-surdeg/skills/bootstrap/project-facts.md` describes.
 `README.md` explains the layout; `vault/` is the library's own memory. Read `vault/status/current-status.md` before starting real work.
