@@ -43,7 +43,10 @@ Confirm `TARGET` with the user in round 1 before writing anything.
    read enough of it (manifest files, top-level layout) to detect the stack,
    so the stack questions become confirmations instead of open questions.
    If `CLAUDE.md` or `.claude/` already exist, ask whether to merge into
-   them, replace them, or stop. Never overwrite silently.
+   them, replace them, or stop. Never overwrite silently. If the project was
+   bootstrapped before (a `progress/*-bootstrap.md` entry or a
+   `setup.md` in the docs folder exists), suggest
+   the `feed` skill instead: it changes only the parts the user picks.
 
 2. **Interview.** Follow [questions.md](questions.md) round by round. Use the
    `AskUserQuestion` tool for multiple-choice rounds (at most 4 questions per
@@ -68,5 +71,6 @@ Confirm `TARGET` with the user in round 1 before writing anything.
 
 6. **Report.** List what was written, what was deliberately left out and
    why (for example "smoke-test: add once a headless run exists"), and the
-   next step. If the library was pasted into `TARGET`, offer to delete that
+   next step. Mention `feed` for changing the setup later and `doctor` for
+   checking it. If the library was pasted into `TARGET`, offer to delete that
    folder now that it has been used; delete only on an explicit yes.
