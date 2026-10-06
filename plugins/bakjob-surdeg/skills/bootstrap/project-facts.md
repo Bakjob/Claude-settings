@@ -1,8 +1,8 @@
 # Project facts: where the bakjob skills look things up
 
-The skills and agents in `bakjob-core`, `bakjob-github`, `bakjob-linear` and
-`bakjob-web` are shared by every project that enables them, so they hold no
-project-specific values. They read them from the project's own files, in the
+The skills and agents in `bakjob-core`, `bakjob-github`, `bakjob-linear`,
+`bakjob-web` and `bakjob-game` are the same in every project that has them
+(copied in or installed), so they hold no project-specific values. They read them from the project's own files, in the
 places listed here. Bootstrap writes these files; [generate.md](generate.md)
 must produce everything below that applies to the project.
 

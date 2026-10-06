@@ -1,17 +1,4 @@
 {
-  "extraKnownMarketplaces": {
-    "bakjob": {
-      "source": {
-        "source": "github",
-        "repo": "Bakjob/Claude-settings"
-      }
-    }
-  },
-  "enabledPlugins": {
-    "bakjob-core@bakjob": true,
-    "bakjob-github@bakjob": true,
-    "bakjob-game@bakjob": true
-  },
   "permissions": {
     "allow": [
       "Bash(godot --headless:*)",

@@ -40,8 +40,8 @@ Start from `SKILL_DIR/CLAUDE-template.md` and write `TARGET/CLAUDE.md`:
   replace the section with one line saying so.
 - **Configurable options:** keep only if the project will have a settings
   system; otherwise delete.
-- **Plugins:** list the plugins step 4 enables and, one line each, what
-  they bring.
+- **Skills and agents:** list the plugins step 4 puts in the project and,
+  one line each, what they bring.
 - Delete the template's "Filling in this template" section.
 
 ## 2. Vault
@@ -96,9 +96,40 @@ describes.
   family with an empty route/arc table, for `content-page-family` to fill as
   pages get built.
 
-## 4. Enable the plugins
+## 4. Put the skills and agents in the project
 
-For each plugin the user accepted in round 12, from inside `TARGET`:
+Depends on **Install mode** from round 12. Either way, the plugins' skills
+need no editing: they read the fact files from step 3.
+
+### Copy (the default): everything under `.claude/`
+
+For each plugin the user accepted in round 12, copy from
+`LIB/plugins/<plugin>/`:
+
+- every `skills/<name>/` folder, whole (including `references/` and any
+  `.html`), to `TARGET/.claude/skills/<name>/`
+- every `agents/*.md` to `TARGET/.claude/agents/`
+
+Also copy the three skills of `bakjob-surdeg` (`bootstrap`, `feed`,
+`doctor`) to `TARGET/.claude/skills/`, folder names unchanged (`feed` and
+`doctor` link to `../bootstrap/`), so changing or checking the setup later
+works from inside the project too.
+
+- If a file or folder of that name already exists in `TARGET/.claude/`, show
+  how it differs and ask; never overwrite silently.
+- Write no `enabledPlugins` and no `extraKnownMarketplaces`: the project must
+  not depend on anything outside its folder. Skills are invoked by plain name
+  (`/feed`, `/doctor`), not `/bakjob-surdeg:feed`.
+- Record in the answer sheet (the `progress/*-bootstrap.md` entry, or
+  `DOCS/setup.md`) an **Install mode** row: `Copy`, plus each copied plugin
+  with its `version` from `LIB/plugins/<plugin>/.claude-plugin/plugin.json`
+  and, if `LIB` is a git repo, `git -C LIB rev-parse --short HEAD`. `feed`
+  and `doctor` compare against it to tell whether a copy is out of date.
+- Tell the user the copies don't update on their own: `feed` refreshes them.
+
+### Plugins (the option)
+
+For each accepted plugin, from inside `TARGET`:
 
 ```
 claude plugin install <plugin>@bakjob --scope project
@@ -120,14 +151,10 @@ both keys by hand:
 }
 ```
 
-Tell the user to restart Claude Code (or run `/reload-plugins` if this
-version has it) so the new plugins load.
-
-**Pasted mode, or the user doesn't want plugins:** copy each accepted
-plugin's `skills/*/` folders from `LIB/plugins/<plugin>/` into
-`TARGET/.claude/skills/` and its `agents/*.md` into `TARGET/.claude/agents/`.
-They need no editing, since they read the fact files; they just won't update
-on their own.
+Record an **Install mode** row `Plugins` in the answer sheet. Tell the user
+to restart Claude Code (or run `/reload-plugins` if this version has it) so
+the new plugins load. The plugins live in `~/.claude/plugins`, outside the
+project; say so once.
 
 ## 5. Issue tracker variants
 
@@ -170,8 +197,9 @@ no workflow plugin. Add "a workflow plugin for TOOL" to open questions.
 
 ## 6. .claude/settings.json
 
-Add to `TARGET/.claude/settings.json` (step 4 may already have created it).
-Merge into what's there instead of replacing it. Build `permissions` from Permissions:
+Add to `TARGET/.claude/settings.json` (step 4 creates it only in plugin
+mode). Merge into what's there instead of replacing it. Build `permissions`
+from Permissions:
 
 - **Generous:** allow the package manager's install/build/test/lint/format
   commands, `git status`, `git diff`, `git log`, `git add`, `git commit`,

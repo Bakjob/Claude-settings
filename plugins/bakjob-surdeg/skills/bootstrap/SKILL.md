@@ -1,6 +1,6 @@
 ---
 name: bootstrap
-description: Set up Claude Code for a new (or existing) project by interviewing the user first: project type and stack, languages, version control, issue tracking, testing, docs/vault, how Claude should work, then generating CLAUDE.md, .claude/agents, .claude/skills, vault/ and .claude/settings.json from the library's templates. Use when the user says "bootstrap", "set up this project" (in any language), or pastes this library into a project folder and asks Claude to use it.
+description: Set up Claude Code for a new (or existing) project by interviewing the user first (project type and stack, languages, version control, issue tracking, testing, docs/vault, how Claude should work), then generating CLAUDE.md, .claude/agents, .claude/skills, vault/ and .claude/settings.json from the library's templates. Use when the user says "bootstrap", "set up this project" (in any language), or pastes this library into a project folder and asks Claude to use it.
 ---
 
 # Bootstrap a project
@@ -14,25 +14,33 @@ question and say so in the summary.
 
 ## Where things are
 
-- **This skill's folder** (`SKILL_DIR`): `${CLAUDE_SKILL_DIR}` in plugin
-  mode; when this file is being read by hand from a pasted copy, the folder
-  this file is in. It holds `CLAUDE-template.md`, `vault-template/` and
-  [project-facts.md](project-facts.md).
-- **Marketplace root** (`LIB`): `SKILL_DIR/../../../..`, the repo that holds
-  `.claude-plugin/marketplace.json` and `plugins/`. Only needed in pasted
-  mode, to copy plugin contents in (see generate.md, step 4).
+- **This skill's folder** (`SKILL_DIR`): `${CLAUDE_SKILL_DIR}` when run as a
+  plugin or project skill; when this file is being read by hand from a
+  pasted copy, the folder this file is in. It holds `CLAUDE-template.md`,
+  `vault-template/` and [project-facts.md](project-facts.md).
+- **Library root** (`LIB`): the repo that holds `.claude-plugin/marketplace.json`
+  and `plugins/`, the source the everyday skills and agents are copied from.
+  In pasted mode it is `SKILL_DIR/../../../..`. When bootstrap runs from the
+  installed plugin (the plugin cache holds only `bakjob-surdeg`), use
+  `~/.claude/plugins/marketplaces/bakjob` if it exists (suggest
+  `/plugin marketplace update bakjob` first, so the copy isn't stale);
+  otherwise ask, then `git clone --depth 1
+  https://github.com/Bakjob/Claude-settings` into a temp folder and delete it
+  when done.
 - **Target** (`TARGET`): the project being set up. Default to the current
   working directory (its git root if it has one). If the library itself was
   pasted into the target, `LIB` is a subfolder of `TARGET`; never treat
   `LIB/vault/` as the project's vault, it is the library's own history.
 
 **How the pieces fit.** This plugin only bootstraps. The everyday skills and
-agents live in the other plugins of the `bakjob` marketplace (`bakjob-core`,
-`bakjob-github`, `bakjob-linear`, `bakjob-web`). They hold no project
-values; they read them from the project's files as
+agents live in the other plugins of the library (`bakjob-core`,
+`bakjob-github`, `bakjob-linear`, `bakjob-web`, `bakjob-game`). They hold no
+project values; they read them from the project's files as
 [project-facts.md](project-facts.md) describes. So bootstrap does two
-things: writes those files from the interview, and enables the right
-plugins for the project.
+things: writes those files from the interview, and puts the right skills and
+agents into the project. By default it copies them into `TARGET/.claude/`, so
+the project depends on nothing outside its folder; it can install them as
+plugins instead (round 12).
 
 Confirm `TARGET` with the user in round 1 before writing anything.
 
@@ -64,13 +72,17 @@ Confirm `TARGET` with the user in round 1 before writing anything.
 4. **Generate.** Follow [generate.md](generate.md).
 
 5. **Verify.** No `[BRACKETED_PLACEHOLDER]` may remain in any generated
-   file (grep for `\[[A-Z][A-Z0-9_]+[^]]*\]`), `.claude/settings.json` must
-   parse as JSON and list the enabled plugins, and every fact
-   [project-facts.md](project-facts.md) names for the enabled plugins must
-   be present. Fix anything that fails before reporting.
+   file (grep for `\[[A-Z][A-Z0-9_]+[^]]*\]`; skip the copied `bootstrap`
+   skill, whose templates keep theirs), `.claude/settings.json` must parse as
+   JSON, in copy mode must list no `bakjob` plugin, in plugin mode must list
+   the enabled plugins, and every fact [project-facts.md](project-facts.md)
+   names for the accepted plugins must be present. In copy mode, every skill
+   and agent of the accepted plugins must exist under `.claude/`. Fix
+   anything that fails before reporting.
 
 6. **Report.** List what was written, what was deliberately left out and
    why (for example "smoke-test: add once a headless run exists"), and the
    next step. Mention `feed` for changing the setup later and `doctor` for
-   checking it. If the library was pasted into `TARGET`, offer to delete that
+   checking it (in copy mode both are already in the project's
+   `.claude/skills/`). If the library was pasted into `TARGET`, offer to delete that
    folder now that it has been used; delete only on an explicit yes.

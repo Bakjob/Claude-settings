@@ -143,9 +143,9 @@ anything the host needs (FTP target folder, project name on the platform).
 
 ## Round 12: Plugins
 
-The everyday skills and agents come as plugins from the `bakjob`
-marketplace. Build a proposal from the answer sheet, show it as a table
-(plugin, what it brings, why it fits), and ask
+The everyday skills and agents are grouped into plugins in the library's
+`plugins/` folder. Build a proposal from the answer sheet, show it as a
+table (plugin, what it brings, why it fits), and ask
 [Go with the proposal · Adjust (say what to add or remove)].
 
 | Plugin | Brings | Recommend when |
@@ -156,10 +156,20 @@ marketplace. Build a proposal from the answer sheet, show it as a table
 | `bakjob-game` | `engine-conventions`, `playtest`, `game-release`, `game-accessibility`; agent `performance-auditor` | Game |
 | `bakjob-web` | `design-taste-frontend`, `redesign-skill`, `content-page-family`, `static-site-deploy`, `web-deploy`, `visual-check`; agent `seo-a11y-auditor` | Website or Web app |
 
-Plugins are enabled per project, so a game project never loads the web
-tools (and a website never loads the game ones). Facts a plugin needs that can't be known yet (a smoke test command
-before there is code) are not invented: they go into the vault's open
-questions, and the skill asks for them the first time it's used.
+Only the accepted plugins go into the project, so a game project never gets
+the web tools (and a website never gets the game ones). Facts a plugin needs
+that can't be known yet (a smoke test command before there is code) are not
+invented: they go into the vault's open questions, and the skill asks for
+them the first time it's used.
+
+- **Q Install mode:** How should the skills and agents get into the project?
+  [Copy into the project: everything lives under `.claude/`, nothing outside
+  the folder, updates only when you refresh the copies with `feed` (Recommended) ·
+  Install as plugins: shared across projects and updated by Claude Code, but
+  stored in `~/.claude/plugins`, outside the project]
+
+Skip this question when the library was pasted into the target (pasted mode)
+or Claude Code has no `claude plugin` command: the answer is Copy.
 
 ## Round 13: Summary
 
