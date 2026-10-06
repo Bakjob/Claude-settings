@@ -205,7 +205,8 @@ format` (Unity/C#), `cargo fmt` (Rust).
 
 - `.gitignore` for the stack (node_modules, build output, `.env*`; Godot
   `.godot/`; Unity `Library/ Temp/ Obj/ Build/ Logs/ UserSettings/`; Rust
-  `target/`). Merge with an existing one.
+  `target/`; `.visual-check/` when `bakjob-web` is enabled). Merge with an
+  existing one.
 - If LFS = Yes: `.gitattributes` tracking the stack's binary asset types
   (images, audio, models, fonts). Check `git lfs version` first.
 - If Host is set and there is no repo yet: `git init`. Creating a remote

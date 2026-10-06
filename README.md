@@ -96,7 +96,7 @@ that bootstrap turns on per project, so a game never loads web tools:
 | `bakjob-core` | per project | git checkpoints, vault upkeep and decision records, smoke tests, a test runner, an architect for hard plans, a config-value auditor, the question desk artifact |
 | `bakjob-github` | per project, GitHub Issues | the issue → PR → review loop with `gh` |
 | `bakjob-linear` | per project, Linear | the same loop through Linear MCP |
-| `bakjob-web` | per project, web | SEO/accessibility/performance audits, frontend design, redesign audits, families of similar pages, deploys to Vercel / Netlify / Cloudflare Pages / containers / FTP |
+| `bakjob-web` | per project, web | SEO/accessibility/performance audits, before/after screenshots of UI changes, frontend design, redesign audits, families of similar pages, deploys to Vercel / Netlify / Cloudflare Pages / containers / FTP |
 
 None of them hold project-specific values. They read them from your
 project's `CLAUDE.md` and `vault/` (commands from `vault/running.md`, rules

@@ -38,7 +38,8 @@ durations, thresholds, sizes, rates, costs, limits.
 
 One section per command group, each with the exact command:
 
-- `## Setup`, `## Dev`, `## Build`
+- `## Setup`, `## Dev` (the dev server command and its local URL, used by
+  `visual-check`), `## Build`
 - `## Test`: frameworks (unit, E2E) and commands, plus type/lint checks
 - `## Lint and format`
 - `## Smoke test`: command, run-length options or flags, any prep step
