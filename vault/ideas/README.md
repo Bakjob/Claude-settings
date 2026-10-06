@@ -19,6 +19,3 @@ permanent like `decisions/` — prune an entry once it's built (note it in
   checkboxes, engine notes (Godot, Unity, Phaser). Bootstrap already asks
   for the engine, so the plugin slots straight into round 12 next to
   `bakjob-web`.
-- **Split `design-taste-frontend`** — 1206 lines, more than every other
-  skill together; a short `SKILL.md` with reference files loaded on
-  demand would cost much less context.
