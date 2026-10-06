@@ -19,4 +19,6 @@ which defeats the point of it being a template.
 concrete rather than generalized, when the concrete tool is the actual
 constant across projects.
 
-**See also:** [0002](./0002-generalize-not-delete.md)
+**See also:** [0002](./0002-generalize-not-delete.md),
+[0006](./0006-tracker-chosen-at-bootstrap.md) (Linear is now one tracker
+option among several; this decision still governs how its skill is written)
