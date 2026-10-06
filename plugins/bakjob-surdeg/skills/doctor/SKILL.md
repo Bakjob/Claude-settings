@@ -1,6 +1,6 @@
 ---
 name: doctor
-description: Health check for a project's Claude Code setup - CLAUDE.md, enabled bakjob plugins, the project facts those plugins read, vault freshness, tracker hygiene and git basics - reported as a table, with fixes applied only after the user approves them. Use when the user asks to check, diagnose or "doctor" the project's setup, after updating the bakjob plugins, when a bakjob skill keeps asking for the same facts, or in a project that was set up by hand.
+description: Health check for a project's Claude Code setup - CLAUDE.md, the bakjob skills and agents (copied or installed), the project facts those plugins read, vault freshness, tracker hygiene and git basics - reported as a table, with fixes applied only after the user approves them. Use when the user asks to check, diagnose or "doctor" the project's setup, after refreshing the bakjob skills, when a bakjob skill keeps asking for the same facts, or in a project that was set up by hand.
 ---
 
 # Doctor
@@ -26,20 +26,29 @@ something is stale or missing that a skill will ask for later) or
    tracker section (or a todo variant) and a git workflow section; no
    `[BRACKETED_PLACEHOLDER]` left (grep `\[[A-Z][A-Z0-9_]+[^]]*\]`).
 
-2. **Plugins.** Read `.claude/settings.json`:
-   - which `bakjob-*` plugins are in `enabledPlugins`, and whether
-     `extraKnownMarketplaces` has `bakjob` (without it, collaborators aren't
-     offered the plugins);
-   - plugins that fit the project but are off: a game without
-     `bakjob-game`, a site without `bakjob-web`, GitHub Issues in
-     `CLAUDE.md` without `bakjob-github`;
-   - plugins that don't fit (web tools in a Godot project);
-   - skills or agents in `.claude/skills/` and `.claude/agents/` with the
-     same name as a plugin's (left over from pasted mode): they shadow the
-     plugin and never update;
-   - `claude plugin list` shows the installed versions; if the user hasn't
-     refreshed the marketplace in a while, suggest
+2. **Skills and agents.** First find the install mode: the **Install mode**
+   row of the answer sheet (`progress/*-bootstrap.md` or `DOCS/setup.md`),
+   confirmed against `.claude/`.
+   - **Copy** (no `bakjob` keys in `.claude/settings.json`): which bakjob
+     skills and agents are in `.claude/skills/` and `.claude/agents/`
+     (names from round 12 of [questions.md](../bootstrap/questions.md)), as
+     whole plugins' worth; skills or agents that fit the project but are
+     missing (a game without `engine-conventions`, GitHub Issues in
+     `CLAUDE.md` without `github-issues-workflow`); ones that don't fit (web
+     tools in a Godot project); copies edited by hand (offer to keep or
+     refresh them, never overwrite silently). Copies don't update on their
+     own: if the answer sheet's plugin versions are older than the
+     library's, say so and point to `feed`. Doctor itself downloads nothing.
+   - **Plugins** (`.claude/settings.json`): which `bakjob-*` plugins are in
+     `enabledPlugins`, and whether `extraKnownMarketplaces` has `bakjob`
+     (without it, collaborators aren't offered the plugins); plugins that
+     fit but are off, or don't fit; skills or agents in `.claude/` with the
+     same name as a plugin's (left over from copying): they shadow the plugin
+     and never update. `claude plugin list` shows the installed versions; if
+     the marketplace hasn't been refreshed in a while, suggest
      `/plugin marketplace update bakjob`.
+   - In either mode, say once that plugin mode keeps files in
+     `~/.claude/plugins`, outside the project, and copy mode doesn't.
 
 3. **Facts.** For each enabled plugin, every fact `project-facts.md` lists:
    the `DOCS/running.md` sections, `DOCS/hard-rules.md` (and its config
@@ -75,12 +84,10 @@ list and ask which to apply. Fix rules:
 
 - A missing fact is asked for once and written into the file
   `project-facts.md` names, same as any bakjob skill would.
-- Turning a plugin on or off:
-  `claude plugin install <plugin>@bakjob --scope project` /
-  `claude plugin uninstall <plugin>@bakjob --scope project`, then remind the
-  user to restart Claude Code.
-- A leftover copied skill is deleted only after showing whether it differs
-  from the plugin's version.
+- Adding or removing a plugin's skills is a `feed` job (it knows both
+  install modes); point there instead of doing it here.
+- In plugin mode, a leftover copied skill is deleted only after showing
+  whether it differs from the plugin's version.
 - Anything that changes the setup's structure (switching tracker, changing
   the git workflow) belongs to `feed`; point there instead of doing it here.
 

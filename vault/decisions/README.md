@@ -34,4 +34,5 @@ in the vault.
 | [0005](./0005-plugin-layout.md) | The repo is a Claude Code plugin; templates live in `templates/`, outside the plugin's component folders | Superseded by 0008 |
 | [0006](./0006-tracker-chosen-at-bootstrap.md) | The issue tracker is chosen in the bootstrap interview; each tracker skill stays concrete | Active |
 | [0007](./0007-github-flow-for-this-repo.md) | This repo itself uses GitHub Issues and pull requests | Active |
-| [0008](./0008-per-project-plugins-read-project-files.md) | Skills ship in per-project plugins and read project values from the project's files | Active |
+| [0008](./0008-per-project-plugins-read-project-files.md) | Skills ship in per-project plugins and read project values from the project's files | Active (install mechanism superseded by 0009) |
+| [0009](./0009-bootstrap-copies-into-the-project.md) | Bootstrap copies skills and agents into the project by default; plugin install is the option | Active |

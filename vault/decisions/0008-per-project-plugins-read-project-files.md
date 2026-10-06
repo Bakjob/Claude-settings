@@ -1,6 +1,7 @@
 # 0008: Skills ship in per-project plugins and read project values from the project's files
 
-**Status:** Active
+**Status:** Active, except how the plugins reach a project: superseded by
+[0009](./0009-bootstrap-copies-into-the-project.md)
 
 **Decision:** The `bakjob` marketplace holds five plugins under `plugins/`.
 `bakjob-surdeg` (bootstrap) is installed once per user. `bakjob-core`,

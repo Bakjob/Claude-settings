@@ -81,8 +81,7 @@ bootstrap skill replaces this whole section with a short todo-list variant.)*
 just bugs, not in the docs, not in a file in this repo. Labels distinguish
 the kinds of work; the workflow below is identical for all of them.
 Day-to-day mechanics (exact commands, state names) live in
-[TRACKER_WORKFLOW_SKILL] (e.g. `github-issues-workflow` from the
-`bakjob-github` plugin).
+[TRACKER_WORKFLOW_SKILL] (e.g. the `github-issues-workflow` skill).
 
 - **Starting a real chunk of new work creates the issue**, if one doesn't
   already exist, at the moment work begins, not after.
@@ -249,20 +248,21 @@ rules:
 
 ---
 
-## Plugins, agents and skills for this project
+## Skills and agents for this project
 
-[List the bakjob plugins enabled for this project (see
-`.claude/settings.json`) and any project-specific agents/skills in
-`.claude/`, one line each on what they're for. Invoke these directly instead
-of re-deriving their logic each time. The plugins read this project's
-values from this file and from [DOCS_DIR]/hard-rules.md, running.md and
-the vault, so keep those current.]
+[List the bakjob skills and agents bootstrap put in `.claude/` (or enabled
+as plugins, see `.claude/settings.json`) and any project-specific
+agents/skills there, one line each on what they're for. Invoke these
+directly instead of re-deriving their logic each time. They read this
+project's values from this file and from [DOCS_DIR]/hard-rules.md,
+running.md and the vault, so keep those current. Say once that the copies in
+`.claude/` are refreshed with the `feed` skill.]
 
 ---
 
 ## Filling in this template for a new project
 
-The `bootstrap` skill of the `bakjob-surdeg` plugin does all of this
+The `bootstrap` skill does all of this
 by interviewing you first. By hand: replace every bracketed placeholder
 above, then delete this section:
 
@@ -273,7 +273,7 @@ above, then delete this section:
 - `[ISSUE_TRACKER]`, `[TRACKER_LOCATION]`, `[TRACKER_WORKFLOW_SKILL]`
   (`linear-dev-workflow`, `github-issues-workflow`, or the line dropped)
 - `[PR_TITLE_CONVENTION]` (or delete that bullet if the project has none)
-- The "Configurable options" and "Plugins, agents and skills" sections, once the
+- The "Configurable options" and "Skills and agents" sections, once the
   project actually has those things.
 
 Sections that don't fit a given project (e.g. no settings system yet, no

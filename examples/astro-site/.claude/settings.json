@@ -1,16 +1,4 @@
 {
-  "extraKnownMarketplaces": {
-    "bakjob": {
-      "source": {
-        "source": "github",
-        "repo": "Bakjob/Claude-settings"
-      }
-    }
-  },
-  "enabledPlugins": {
-    "bakjob-core@bakjob": true,
-    "bakjob-web@bakjob": true
-  },
   "permissions": {
     "allow": [
       "Bash(pnpm install:*)",
