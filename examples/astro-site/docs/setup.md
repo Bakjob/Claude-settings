@@ -19,4 +19,3 @@ the setup was generated from; `feed` updates this file when they change.
 | 11 | Push back / Questions / Permissions / Deploy | Flag clear problems · In the terminal · Standard · Netlify (kvarngatansbageri.se) |
 | 11 | Quality bar | Lighthouse 90+ and WCAG 2.2 AA |
 | 12 | Plugins | `bakjob-core`, `bakjob-web` |
-| 12 | Install mode | Copy (core 0.1.0, web 0.3.0, surdeg 0.5.0) |

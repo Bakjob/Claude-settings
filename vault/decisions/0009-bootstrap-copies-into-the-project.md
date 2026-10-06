@@ -1,6 +1,6 @@
 # 0009: Bootstrap copies skills and agents into the project by default; plugin install is the option
 
-**Status:** Active
+**Status:** Superseded by [0010](./0010-plugin-install-is-the-default.md)
 
 **Decision:** Bootstrap copies the accepted plugins' skills and agents (and
 `bootstrap`, `feed`, `doctor`) into the project's `.claude/skills/` and

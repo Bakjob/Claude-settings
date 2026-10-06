@@ -78,7 +78,7 @@ a drift.
 `in review`, Done is closed), not just bugs, not in the docs, not in a file in this repo. Labels distinguish
 the kinds of work; the workflow below is identical for all of them.
 Day-to-day mechanics (exact commands, state names) live in
-the `github-issues-workflow` skill.
+`github-issues-workflow` from the `bakjob-github` plugin.
 
 - **Starting a real chunk of new work creates the issue**, if one doesn't
   already exist, at the moment work begins, not after.
@@ -243,9 +243,8 @@ One human and several Claude sessions work in this repository. The rules:
 
 ## Skills and agents for this project
 
-Copied into `.claude/skills/` and `.claude/agents/` by bootstrap (refresh
-them with the `feed` skill); invoke them directly instead of re-deriving
-their logic:
+Enabled in `.claude/settings.json`; invoke them directly instead of
+re-deriving their logic:
 
 - **`bakjob-core`**: `git-checkpoint`, `vault-update` / `vault-scribe`,
   `new-decision`, `smoke-test` (once there is one), `artifact-question-desk`,

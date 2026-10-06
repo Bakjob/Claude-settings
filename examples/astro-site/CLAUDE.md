@@ -142,9 +142,8 @@ One person and Claude work in this repository, straight on `main`:
 
 ## Skills and agents for this project
 
-Copied into `.claude/skills/` and `.claude/agents/` by bootstrap (refresh
-them with the `feed` skill); invoke them directly instead of re-deriving
-their logic:
+Enabled in `.claude/settings.json`; invoke them directly instead of
+re-deriving their logic:
 
 - **`bakjob-core`**: `git-checkpoint`, `vault-update`, `new-decision`,
   `architect` for hard plans, `test-runner` for build, typecheck and lint.

@@ -1,7 +1,7 @@
 {
   "name": "bakjob-surdeg",
-  "version": "0.5.0",
-  "description": "Sourdough starter for new projects: bootstrap interviews you about stack, languages, version control, issue tracking, testing and workflow, then writes CLAUDE.md, a vault and .claude/settings.json and copies the right skills and agents into the project (or enables them as plugins). feed changes part of the setup later; doctor checks it.",
+  "version": "0.6.0",
+  "description": "Sourdough starter for new projects: bootstrap interviews you about stack, languages, version control, issue tracking, testing and workflow, then writes CLAUDE.md, a vault and .claude/settings.json and enables the right bakjob plugins (or copies their skills and agents into the project). feed changes part of the setup later; doctor checks it.",
   "author": {
     "name": "Bakjob"
   },

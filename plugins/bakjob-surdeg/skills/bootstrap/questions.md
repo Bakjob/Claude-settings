@@ -163,10 +163,10 @@ invented: they go into the vault's open questions, and the skill asks for
 them the first time it's used.
 
 - **Q Install mode:** How should the skills and agents get into the project?
-  [Copy into the project: everything lives under `.claude/`, nothing outside
-  the folder, updates only when you refresh the copies with `feed` (Recommended) ·
-  Install as plugins: shared across projects and updated by Claude Code, but
-  stored in `~/.claude/plugins`, outside the project]
+  [Install as plugins: shared across projects and updated by Claude Code
+  (Recommended) · Copy into the project: everything lives under `.claude/`,
+  nothing outside the folder, updates only when you refresh the copies with
+  `feed`]
 
 Skip this question when the library was pasted into the target (pasted mode)
 or Claude Code has no `claude plugin` command: the answer is Copy.
