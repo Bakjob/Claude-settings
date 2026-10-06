@@ -1,7 +1,7 @@
 {
   "name": "bakjob-web",
-  "version": "0.1.1",
-  "description": "Web project tools: SEO, accessibility and performance audits, anti-slop frontend design, redesign audits, families of similar content pages, static-site deploy checklist.",
+  "version": "0.2.0",
+  "description": "Web project tools: SEO, accessibility and performance audits, anti-slop frontend design, redesign audits, families of similar content pages, and deploys to Vercel, Netlify, Cloudflare Pages, containers or FTP hosting.",
   "author": {
     "name": "Bakjob"
   },

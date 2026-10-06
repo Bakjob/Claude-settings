@@ -44,7 +44,10 @@ One section per command group, each with the exact command:
 - `## Smoke test`: command, run-length options or flags, any prep step
   needed first, and one line per check: its name, its pass criterion, and
   the file or subsystem it points at when it fails
-- `## Deploy`: host, domain, steps, and post-launch steps (search console)
+- `## Deploy`: platform or host, the project/app name on it, production
+  domain and branch, the environment variable names (never values) and
+  where they're set, deploy and rollback steps, and post-launch steps
+  (search console). Used by `static-site-deploy` and `web-deploy`.
 
 ## `DOCS/quality-targets.md` (web projects)
 

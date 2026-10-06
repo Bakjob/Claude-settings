@@ -149,7 +149,7 @@ marketplace. Build a proposal from the answer sheet, show it as a table
 | `bakjob-core` | `git-checkpoint`, `vault-update`, `new-decision`, `smoke-test`, `test-all-branches`, `artifact-question-desk`; agents `architect`, `test-runner`, `vault-scribe`, `smoke-test-runner`, `config-value-auditor` | almost always; skip only for a throwaway prototype with no git and no vault |
 | `bakjob-github` | `github-issues-workflow` | Tracker = GitHub Issues |
 | `bakjob-linear` | `linear-dev-workflow` | Tracker = Linear |
-| `bakjob-web` | `design-taste-frontend`, `redesign-skill`, `content-page-family`, `static-site-deploy`; agent `seo-a11y-auditor` | Website or Web app |
+| `bakjob-web` | `design-taste-frontend`, `redesign-skill`, `content-page-family`, `static-site-deploy`, `web-deploy`; agent `seo-a11y-auditor` | Website or Web app |
 
 Plugins are enabled per project, so a game project never loads the web
 tools. Facts a plugin needs that can't be known yet (a smoke test command

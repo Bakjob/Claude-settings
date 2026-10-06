@@ -77,7 +77,9 @@ describes.
   commands for the stack and package manager. For a project with no code
   yet, list the commands the chosen stack will use and say they apply once
   it is scaffolded. A section with nothing known yet says so in one line
-  ("No smoke test yet") rather than being left out.
+  ("No smoke test yet") rather than being left out. `## Deploy` gets the
+  platform, domain and production branch from round 11, and a
+  `.env.example` is created if the stack uses environment variables.
 - `DOCS/quality-targets.md`, if `bakjob-web` is enabled and a quality bar
   was chosen: the thresholds, WCAG level, meta title convention and JSON-LD
   schemas per page type.
