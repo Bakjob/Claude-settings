@@ -83,6 +83,9 @@ describes.
 - `DOCS/quality-targets.md`, if `bakjob-web` is enabled and a quality bar
   was chosen: the thresholds, WCAG level, meta title convention and JSON-LD
   schemas per page type.
+- `DOCS/quality-targets.md`, if `bakjob-game` is enabled: target
+  platforms, the frame rate from Performance (and the budget in ms), and
+  memory/load-time budgets marked "not set yet" until they are.
 - `DOCS/design/page-families.md`, if Page families = Yes: a heading per
   family with an empty route/arc table, for `content-page-family` to fill as
   pages get built.
