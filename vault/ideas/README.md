@@ -13,11 +13,12 @@ permanent like `decisions/` — prune an entry once it's built (note it in
   assumes static export + FTP-style hosting. A second deploy skill template
   for a containerized/serverless deploy shape would cover more project
   types.
-- **Game-dev pack** — templates for a game project: a `game-design/` vault
+- **`bakjob-game` plugin** — a game-dev pack: a `game-design/` vault
   seed with core loop / mechanics / tuning tables, a performance (frame
   budget) agent, a playtest skill splitting measurable checks from "feel"
   checkboxes, engine notes (Godot, Unity, Phaser). Bootstrap already asks
-  for the engine, so these can plug straight into round 12.
+  for the engine, so the plugin slots straight into round 12 next to
+  `bakjob-web`.
 - **Split `design-taste-frontend`** — 1206 lines, more than every other
-  template together; a short `SKILL.md` with reference files loaded on
+  skill together; a short `SKILL.md` with reference files loaded on
   demand would cost much less context.

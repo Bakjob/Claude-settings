@@ -1,6 +1,6 @@
 # 0001: Templates use bracket placeholders, not duplicated examples
 
-**Status:** Active
+**Status:** Superseded by [0008](./0008-per-project-plugins-read-project-files.md)
 
 **Decision:** Every agent and skill in this repo is written as a fillable
 template using `[BRACKETED_PLACEHOLDER]` tokens for anything project-specific

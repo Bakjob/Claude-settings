@@ -1,6 +1,6 @@
 # 0005: The repo is a Claude Code plugin; templates live in `templates/`, outside the plugin's component folders
 
-**Status:** Active
+**Status:** Superseded by [0008](./0008-per-project-plugins-read-project-files.md)
 
 **Decision:** The repo ships `.claude-plugin/plugin.json` (plugin
 `bakjob-surdeg`) and `.claude-plugin/marketplace.json` (marketplace

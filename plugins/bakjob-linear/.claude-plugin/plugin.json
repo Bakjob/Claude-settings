@@ -1,0 +1,10 @@
+{
+  "name": "bakjob-linear",
+  "version": "0.1.0",
+  "description": "Linear workflow with real Linear MCP calls: pull issue context, claim, move through In Progress / In Review / Done.",
+  "author": {
+    "name": "Bakjob"
+  },
+  "repository": "https://github.com/Bakjob/Claude-settings",
+  "license": "MIT"
+}

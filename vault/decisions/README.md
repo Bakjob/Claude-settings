@@ -27,10 +27,11 @@ in the vault.
 
 | # | Title | Status |
 |---|---|---|
-| [0001](./0001-bracket-placeholder-convention.md) | Templates use bracket placeholders, not duplicated examples | Active |
+| [0001](./0001-bracket-placeholder-convention.md) | Templates use bracket placeholders, not duplicated examples | Superseded by 0008 |
 | [0002](./0002-generalize-not-delete.md) | Narrow single-project skills get generalized to their reusable pattern, not deleted | Active |
 | [0003](./0003-linear-stays-concrete.md) | `linear-dev-workflow` stays a real, usable Linear skill instead of a generic tracker template | Active |
 | [0004](./0004-vault-scoped-to-this-repo.md) | This repo's `vault/` documents the meta-project, not a stand-in for the vault pattern the templates describe | Active |
-| [0005](./0005-plugin-layout.md) | The repo is a Claude Code plugin; templates live in `templates/`, outside the plugin's component folders | Active |
+| [0005](./0005-plugin-layout.md) | The repo is a Claude Code plugin; templates live in `templates/`, outside the plugin's component folders | Superseded by 0008 |
 | [0006](./0006-tracker-chosen-at-bootstrap.md) | The issue tracker is chosen in the bootstrap interview; each tracker skill stays concrete | Active |
 | [0007](./0007-github-flow-for-this-repo.md) | This repo itself uses GitHub Issues and pull requests | Active |
+| [0008](./0008-per-project-plugins-read-project-files.md) | Skills ship in per-project plugins and read project values from the project's files | Active |

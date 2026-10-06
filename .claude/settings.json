@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "bakjob": {
+      "source": {
+        "source": "github",
+        "repo": "Bakjob/Claude-settings"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "bakjob-github@bakjob": true
+  }
+}
