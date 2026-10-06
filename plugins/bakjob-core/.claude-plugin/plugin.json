@@ -1,0 +1,10 @@
+{
+  "name": "bakjob-core",
+  "version": "0.1.0",
+  "description": "Everyday workflow for a bootstrapped project: git checkpoints, vault upkeep and decision records, smoke tests, a test runner, an architect for hard plans, a config-value auditor and the question desk artifact.",
+  "author": {
+    "name": "Bakjob"
+  },
+  "repository": "https://github.com/Bakjob/Claude-settings",
+  "license": "MIT"
+}

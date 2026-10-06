@@ -8,8 +8,32 @@
   "plugins": [
     {
       "name": "bakjob-surdeg",
-      "description": "Interview-driven project bootstrap: asks about version control, issue tracking, language, stack and workflow, then writes CLAUDE.md, .claude/agents, .claude/skills, vault/ and .claude/settings.json.",
-      "source": "./",
+      "description": "Sourdough starter for new projects: the bootstrap skill interviews you about stack, languages, version control, issue tracking, testing and workflow, then writes CLAUDE.md, a vault and .claude/settings.json and enables the right bakjob plugins for the project.",
+      "source": "./plugins/bakjob-surdeg",
+      "category": "productivity"
+    },
+    {
+      "name": "bakjob-core",
+      "description": "Everyday workflow for a bootstrapped project: git checkpoints, vault upkeep and decision records, smoke tests, a test runner, an architect for hard plans, a config-value auditor and the question desk artifact.",
+      "source": "./plugins/bakjob-core",
+      "category": "productivity"
+    },
+    {
+      "name": "bakjob-github",
+      "description": "GitHub Issues workflow with real gh commands: create and claim issues, in progress / in review labels, close only when verified.",
+      "source": "./plugins/bakjob-github",
+      "category": "productivity"
+    },
+    {
+      "name": "bakjob-linear",
+      "description": "Linear workflow with real Linear MCP calls: pull issue context, claim, move through In Progress / In Review / Done.",
+      "source": "./plugins/bakjob-linear",
+      "category": "productivity"
+    },
+    {
+      "name": "bakjob-web",
+      "description": "Web project tools: SEO, accessibility and performance audits, anti-slop frontend design, redesign audits, families of similar content pages, static-site deploy checklist.",
+      "source": "./plugins/bakjob-web",
       "category": "productivity"
     }
   ]

@@ -1,0 +1,10 @@
+{
+  "name": "bakjob-web",
+  "version": "0.1.0",
+  "description": "Web project tools: SEO, accessibility and performance audits, anti-slop frontend design, redesign audits, families of similar content pages, static-site deploy checklist.",
+  "author": {
+    "name": "Bakjob"
+  },
+  "repository": "https://github.com/Bakjob/Claude-settings",
+  "license": "MIT"
+}

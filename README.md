@@ -16,8 +16,8 @@ Built for web and game projects, usable for anything.
 /plugin install bakjob-surdeg@bakjob
 ```
 
-Run these inside Claude Code, in any session: marketplaces and plugins are
-installed for your user, not for one project. Then open a new (or existing)
+Run these inside Claude Code, in any session: the marketplace and
+`bakjob-surdeg` are installed for your user, not for one project. Then open a new (or existing)
 project folder and run:
 
 ```
@@ -39,7 +39,8 @@ You never need to add the marketplace again.
 
 Copy this repo into a subfolder of your project (e.g. `_claude-settings/`)
 and tell Claude: *"read `_claude-settings/BOOTSTRAP.md` and set up the
-project"*. Claude offers to delete the folder when it's done.
+project"*. Bootstrap then copies the skills it picks into `.claude/` instead
+of enabling plugins, and offers to delete the folder when it's done.
 </details>
 
 ## How it works
@@ -72,9 +73,8 @@ What it asks about:
 your-project/
 ├── CLAUDE.md              how Claude works in this project
 ├── .claude/
-│   ├── settings.json      permissions, optional formatter hook
-│   ├── agents/            the agents that fit your answers
-│   └── skills/            the skills that fit your answers
+│   └── settings.json      the plugins this project uses, permissions,
+│                          optional formatter hook
 ├── vault/                 hard rules, how to run it, decisions, progress, status
 └── .gitignore, CI         if you asked for them
 ```
@@ -85,23 +85,32 @@ creates and claims the issue, opens the PR, and puts a checklist of what
 needs your eyes on the issue. "Done" means you confirmed it works, not just
 that it merged.
 
-## What's in the library
+## The plugins
 
-The templates bootstrap picks from live in [`templates/`](templates/):
+The `bakjob` marketplace has one plugin you install for yourself and four
+that bootstrap turns on per project, so a game never loads web tools:
 
-- **Workflow:** `git-checkpoint`, `github-issues-workflow`,
-  `linear-dev-workflow`, `test-all-branches`
-- **Project memory:** `vault-update`, `new-decision`, agent `vault-scribe`,
-  a vault skeleton
-- **Quality:** agents `test-runner`, `smoke-test-runner`, `architect`,
-  `config-value-auditor`, `seo-a11y-auditor`, skill `smoke-test`
-- **Web:** `design-taste-frontend`, `redesign-skill`, `content-page-family`,
-  `static-site-deploy`
-- **Asking you things:** `artifact-question-desk`
-- **`CLAUDE-template.md`**, the base for each project's `CLAUDE.md`
+| Plugin | Installed | What it brings |
+|---|---|---|
+| `bakjob-surdeg` | once, by you | `bootstrap` |
+| `bakjob-core` | per project | git checkpoints, vault upkeep and decision records, smoke tests, a test runner, an architect for hard plans, a config-value auditor, the question desk artifact |
+| `bakjob-github` | per project, GitHub Issues | the issue → PR → review loop with `gh` |
+| `bakjob-linear` | per project, Linear | the same loop through Linear MCP |
+| `bakjob-web` | per project, web | SEO/accessibility/performance audits, frontend design, redesign audits, families of similar pages, static-site deploy |
 
-You can also copy any of them by hand into `.claude/agents/` or
-`.claude/skills/` and fill in the `[BRACKETED_PLACEHOLDERS]`.
+None of them hold project-specific values. They read them from your
+project's `CLAUDE.md` and `vault/` (commands from `vault/running.md`, rules
+from `vault/hard-rules.md` …), so one improvement here reaches every project
+on the next update. When a skill needs something that isn't written down
+yet, it asks once and writes the answer where the next session will find it.
+The full list of what lives where is in
+[`project-facts.md`](plugins/bakjob-surdeg/skills/bootstrap/project-facts.md).
+
+You can enable a plugin in a project by hand too:
+
+```
+claude plugin install bakjob-web@bakjob --scope project
+```
 
 ## Contributing
 

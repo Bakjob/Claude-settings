@@ -10,9 +10,8 @@ the library got that way and what's still open — decisions, a dated history,
 today's status, and a backlog. The root README rarely changes shape; this
 vault changes after almost every real session.
 
-**This is also the reference implementation.** `templates/agents/vault-scribe.md`,
-`templates/skills/vault-update/` and `templates/skills/new-decision/` (and
-bootstrap's `templates/vault/` skeleton) describe a
+**This is also the reference implementation.** `bakjob-core`'s `vault-scribe`, `vault-update` and `new-decision` (and
+bootstrap's `vault-template/` skeleton) describe a
 `decisions/` / `progress/` / `status/` vault layout for you to copy into
 *other* projects. This vault uses that exact layout on itself. If you change
 the layout here, update those templates to match, and vice versa.

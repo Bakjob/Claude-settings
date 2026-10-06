@@ -1,0 +1,10 @@
+{
+  "name": "bakjob-github",
+  "version": "0.1.0",
+  "description": "GitHub Issues workflow with real gh commands: create and claim issues, in progress / in review labels, close only when verified.",
+  "author": {
+    "name": "Bakjob"
+  },
+  "repository": "https://github.com/Bakjob/Claude-settings",
+  "license": "MIT"
+}

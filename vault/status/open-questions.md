@@ -3,10 +3,9 @@
 Unresolved things about how this library itself should work. Project ideas
 (new agents/skills to build) go in `ideas/`, not here.
 
-- **Category subfolders for `skills/`?** Right now all 12 templates sit flat in `templates/skills/`.
-  If the collection grows past ~20-25, flat may stop being scannable.
-  Undecided whether to introduce subfolders (e.g. `skills/git/`,
-  `skills/vault/`) or keep it flat and rely on the README's index instead.
+- **When does `bakjob-core` get too big?** It's ~1,100 always-on tokens
+  with 11 components. If it grows much further, split it (e.g. a
+  `bakjob-vault` plugin) so projects without a vault don't pay for it.
 - **Has the bootstrap been run end to end?** Not yet (2026-10-05). The first
   real project bootstrapped with it will show which questions are missing,
   redundant or badly worded; fold that back into `questions.md`.
