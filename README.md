@@ -54,6 +54,15 @@ of enabling plugins, and offers to delete the folder when it's done.
    written before you say yes.
 4. **Generates and checks** the setup: no leftover placeholders, valid JSON.
 
+Later, two more commands from the same plugin:
+
+- **`/bakjob-surdeg:feed`** changes part of the setup: switch tracker, add a
+  deploy target, turn game tools on. It asks only the rounds you pick, with
+  today's answers as the defaults, and shows the change before making it.
+- **`/bakjob-surdeg:doctor`** checks the setup and offers fixes: missing
+  facts the plugins need, plugins that should be on, a stale vault, issues
+  stuck in progress.
+
 What it asks about:
 
 | | |
@@ -68,6 +77,9 @@ What it asks about:
 | **Working style** | how hard Claude should push back, permissions, deploy target |
 
 ## What you get
+
+See [`examples/`](examples/) for two complete results: a Godot game and an
+Astro website.
 
 ```
 your-project/
@@ -93,11 +105,11 @@ website never loads game tools:
 
 | Plugin | Installed | What it brings |
 |---|---|---|
-| `bakjob-surdeg` | once, by you | `bootstrap` |
+| `bakjob-surdeg` | once, by you | `bootstrap`, `feed`, `doctor` |
 | `bakjob-core` | per project | git checkpoints, vault upkeep and decision records, smoke tests, a test runner, an architect for hard plans, a config-value auditor, the question desk artifact |
 | `bakjob-github` | per project, GitHub Issues | the issue → PR → review loop with `gh` |
 | `bakjob-linear` | per project, Linear | the same loop through Linear MCP |
-| `bakjob-game` | per project, games | engine rules for Godot / Unity / Phaser / Bevy, a performance auditor against your frame budget, playtests that split provable checks from feel, releases to itch.io and Steam |
+| `bakjob-game` | per project, games | engine rules for Godot / Unity / Phaser / Bevy, a performance auditor against your frame budget, playtests that split provable checks from feel, an accessibility checklist, releases to itch.io and Steam |
 | `bakjob-web` | per project, web | SEO/accessibility/performance audits, before/after screenshots of UI changes, frontend design, redesign audits, families of similar pages, deploys to Vercel / Netlify / Cloudflare Pages / containers / FTP |
 
 None of them hold project-specific values. They read them from your

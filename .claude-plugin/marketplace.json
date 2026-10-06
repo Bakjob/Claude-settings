@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "bakjob-surdeg",
-      "description": "Sourdough starter for new projects: the bootstrap skill interviews you about stack, languages, version control, issue tracking, testing and workflow, then writes CLAUDE.md, a vault and .claude/settings.json and enables the right bakjob plugins for the project.",
+      "description": "Sourdough starter for new projects: bootstrap interviews you about stack, languages, version control, issue tracking, testing and workflow, then writes CLAUDE.md, a vault and .claude/settings.json and enables the right bakjob plugins. feed changes part of the setup later; doctor checks it.",
       "source": "./plugins/bakjob-surdeg",
       "category": "productivity"
     },
@@ -38,7 +38,7 @@
     },
     {
       "name": "bakjob-game",
-      "description": "Game project tools: engine conventions for Godot, Unity, Phaser and Bevy, a performance auditor against your frame budget, playtests that split provable checks from feel, and releases to itch.io and Steam.",
+      "description": "Game project tools: engine conventions for Godot, Unity, Phaser and Bevy, a performance auditor against your frame budget, playtests that split provable checks from feel, an accessibility checklist, and releases to itch.io and Steam.",
       "source": "./plugins/bakjob-game",
       "category": "productivity"
     }
