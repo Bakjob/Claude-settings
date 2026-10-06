@@ -9,10 +9,7 @@ permanent like `decisions/` — prune an entry once it's built (note it in
   audit agents exist (`seo-a11y-auditor`, `config-value-auditor`); a
   lighter-weight generic pre-merge checklist skill (not agent) might be
   worth adding for projects too small to want a dedicated agent per concern.
-- **CI/deploy templates beyond static hosting** — `static-site-deploy`
-  assumes static export + FTP-style hosting. A second deploy skill template
-  for a containerized/serverless deploy shape would cover more project
-  types.
+
 - **`bakjob-game` plugin** — a game-dev pack: a `game-design/` vault
   seed with core loop / mechanics / tuning tables, a performance (frame
   budget) agent, a playtest skill splitting measurable checks from "feel"
