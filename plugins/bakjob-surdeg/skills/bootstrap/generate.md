@@ -101,33 +101,7 @@ describes.
 Depends on **Install mode** from round 12. Either way, the plugins' skills
 need no editing: they read the fact files from step 3.
 
-### Copy (the default): everything under `.claude/`
-
-For each plugin the user accepted in round 12, copy from
-`LIB/plugins/<plugin>/`:
-
-- every `skills/<name>/` folder, whole (including `references/` and any
-  `.html`), to `TARGET/.claude/skills/<name>/`
-- every `agents/*.md` to `TARGET/.claude/agents/`
-
-Also copy the three skills of `bakjob-surdeg` (`bootstrap`, `feed`,
-`doctor`) to `TARGET/.claude/skills/`, folder names unchanged (`feed` and
-`doctor` link to `../bootstrap/`), so changing or checking the setup later
-works from inside the project too.
-
-- If a file or folder of that name already exists in `TARGET/.claude/`, show
-  how it differs and ask; never overwrite silently.
-- Write no `enabledPlugins` and no `extraKnownMarketplaces`: the project must
-  not depend on anything outside its folder. Skills are invoked by plain name
-  (`/feed`, `/doctor`), not `/bakjob-surdeg:feed`.
-- Record in the answer sheet (the `progress/*-bootstrap.md` entry, or
-  `DOCS/setup.md`) an **Install mode** row: `Copy`, plus each copied plugin
-  with its `version` from `LIB/plugins/<plugin>/.claude-plugin/plugin.json`
-  and, if `LIB` is a git repo, `git -C LIB rev-parse --short HEAD`. `feed`
-  and `doctor` compare against it to tell whether a copy is out of date.
-- Tell the user the copies don't update on their own: `feed` refreshes them.
-
-### Plugins (the option)
+### Plugins (the default)
 
 For each accepted plugin, from inside `TARGET`:
 
@@ -155,6 +129,32 @@ Record an **Install mode** row `Plugins` in the answer sheet. Tell the user
 to restart Claude Code (or run `/reload-plugins` if this version has it) so
 the new plugins load. The plugins live in `~/.claude/plugins`, outside the
 project; say so once.
+
+### Copy (the option): everything under `.claude/`
+
+For each plugin the user accepted in round 12, copy from
+`LIB/plugins/<plugin>/`:
+
+- every `skills/<name>/` folder, whole (including `references/` and any
+  `.html`), to `TARGET/.claude/skills/<name>/`
+- every `agents/*.md` to `TARGET/.claude/agents/`
+
+Also copy the three skills of `bakjob-surdeg` (`bootstrap`, `feed`,
+`doctor`) to `TARGET/.claude/skills/`, folder names unchanged (`feed` and
+`doctor` link to `../bootstrap/`), so changing or checking the setup later
+works from inside the project too.
+
+- If a file or folder of that name already exists in `TARGET/.claude/`, show
+  how it differs and ask; never overwrite silently.
+- Write no `enabledPlugins` and no `extraKnownMarketplaces`: the project must
+  not depend on anything outside its folder. Skills are invoked by plain name
+  (`/feed`, `/doctor`), not `/bakjob-surdeg:feed`.
+- Record in the answer sheet (the `progress/*-bootstrap.md` entry, or
+  `DOCS/setup.md`) an **Install mode** row: `Copy`, plus each copied plugin
+  with its `version` from `LIB/plugins/<plugin>/.claude-plugin/plugin.json`
+  and, if `LIB` is a git repo, `git -C LIB rev-parse --short HEAD`. `feed`
+  and `doctor` compare against it to tell whether a copy is out of date.
+- Tell the user the copies don't update on their own: `feed` refreshes them.
 
 ## 5. Issue tracker variants
 

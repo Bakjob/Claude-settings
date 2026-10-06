@@ -9,24 +9,7 @@ your answers.
 
 Built for web and game projects, usable for anything.
 
-## Use it
-
-Copy this repo into a subfolder of your project (e.g. `_claude-settings/`)
-and tell Claude: *"read `_claude-settings/BOOTSTRAP.md` and set up the
-project"*. Bootstrap interviews you, writes the setup, **copies the skills
-and agents it picked into the project's `.claude/`** and offers to delete the
-subfolder when it's done. Nothing ends up outside the project folder, so the
-project works the same on another machine and with no plugin installed.
-
-The copies don't update on their own. To refresh them, or to add and remove
-skills later, run `/feed`: it compares your copies against a fresh copy of
-this library and overwrites only what you accept.
-
-<details>
-<summary>Install as a plugin instead</summary>
-
-If you'd rather have one shared copy that Claude Code updates for you (kept
-in `~/.claude/plugins`, outside your projects):
+## Install
 
 ```
 /plugin marketplace add Bakjob/Claude-settings
@@ -35,14 +18,36 @@ in `~/.claude/plugins`, outside your projects):
 
 Run these inside Claude Code, in any session: the marketplace and
 `bakjob-surdeg` are installed for your user, not for one project. Then open a
-project folder and run `/bakjob-surdeg:bootstrap`. In round 12 choose
-"Install as plugins" and bootstrap enables the other plugins for that project
-instead of copying them. Update later with:
+new (or existing) project folder and run:
+
+```
+/bakjob-surdeg:bootstrap
+```
+
+Bootstrap interviews you, writes the setup and enables the plugins it picked
+for that project. To get a newer version later, refresh the marketplace and
+update the plugin, then restart Claude Code:
 
 ```
 /plugin marketplace update bakjob
 /plugin update bakjob-surdeg@bakjob
 ```
+
+You never need to add the marketplace again.
+
+<details>
+<summary>Without installing the plugin: copy the skills into the project</summary>
+
+Copy this repo into a subfolder of your project (e.g. `_claude-settings/`)
+and tell Claude: *"read `_claude-settings/BOOTSTRAP.md` and set up the
+project"*. Bootstrap then **copies the skills and agents it picked into the
+project's `.claude/`** and offers to delete the subfolder when it's done.
+Nothing ends up outside the project folder, so the project works the same on
+another machine with no plugin installed.
+
+The same works from the installed plugin: in round 12 choose "Copy into the
+project". The copies don't update on their own; run `/feed` to compare them
+against a fresh copy of this library and overwrite only what you accept.
 </details>
 
 ## How it works
@@ -56,13 +61,13 @@ instead of copying them. Update later with:
    written before you say yes.
 4. **Generates and checks** the setup: no leftover placeholders, valid JSON.
 
-Later, two more commands (`/bakjob-surdeg:feed` and `/bakjob-surdeg:doctor`
-when installed as a plugin; bootstrap copies them into the project too):
+Later, two more commands from the same plugin (plain `/feed` and `/doctor` if
+you copied the skills into the project):
 
-- **`/feed`** changes part of the setup: switch tracker, add a
+- **`/bakjob-surdeg:feed`** changes part of the setup: switch tracker, add a
   deploy target, turn game tools on. It asks only the rounds you pick, with
   today's answers as the defaults, and shows the change before making it.
-- **`/doctor`** checks the setup and offers fixes: missing
+- **`/bakjob-surdeg:doctor`** checks the setup and offers fixes: missing
   facts the plugins need, plugins that should be on, a stale vault, issues
   stuck in progress.
 
@@ -88,9 +93,9 @@ Astro website.
 your-project/
 ├── CLAUDE.md              how Claude works in this project
 ├── .claude/
-│   ├── skills/            the skills bootstrap picked (plus bootstrap, feed, doctor)
-│   ├── agents/            the agents it picked
-│   └── settings.json      permissions, optional formatter hook
+│   └── settings.json      the plugins this project uses, permissions,
+│                          optional formatter hook (with "copy into the
+│                          project": skills/ and agents/ here too)
 ├── vault/                 hard rules, how to run it, decisions, progress, status
 └── .gitignore, CI         if you asked for them
 ```
@@ -103,30 +108,28 @@ that it merged.
 
 ## The plugins
 
-The library is split into six plugins (folders under `plugins/`, also a
-Claude Code marketplace called `bakjob`). Bootstrap copies only the ones that
-fit into a project, so a game never gets web tools and a website never gets
-game tools:
+The `bakjob` marketplace has one plugin you install for yourself and five
+that bootstrap turns on per project, so a game never loads web tools and a
+website never loads game tools:
 
-| Plugin | Goes into | What it brings |
+| Plugin | Installed | What it brings |
 |---|---|---|
-| `bakjob-surdeg` | every bootstrapped project | `bootstrap`, `feed`, `doctor` |
-| `bakjob-core` | almost every project | git checkpoints, vault upkeep and decision records, smoke tests, a test runner, an architect for hard plans, a config-value auditor, the question desk artifact |
-| `bakjob-github` | GitHub Issues | the issue → PR → review loop with `gh` |
-| `bakjob-linear` | Linear | the same loop through Linear MCP |
-| `bakjob-game` | games | engine rules for Godot / Unity / Phaser / Bevy, a performance auditor against your frame budget, playtests that split provable checks from feel, an accessibility checklist, releases to itch.io and Steam |
-| `bakjob-web` | web | SEO/accessibility/performance audits, before/after screenshots of UI changes, frontend design, redesign audits, families of similar pages, deploys to Vercel / Netlify / Cloudflare Pages / containers / FTP |
+| `bakjob-surdeg` | once, by you | `bootstrap`, `feed`, `doctor` |
+| `bakjob-core` | per project | git checkpoints, vault upkeep and decision records, smoke tests, a test runner, an architect for hard plans, a config-value auditor, the question desk artifact |
+| `bakjob-github` | per project, GitHub Issues | the issue → PR → review loop with `gh` |
+| `bakjob-linear` | per project, Linear | the same loop through Linear MCP |
+| `bakjob-game` | per project, games | engine rules for Godot / Unity / Phaser / Bevy, a performance auditor against your frame budget, playtests that split provable checks from feel, an accessibility checklist, releases to itch.io and Steam |
+| `bakjob-web` | per project, web | SEO/accessibility/performance audits, before/after screenshots of UI changes, frontend design, redesign audits, families of similar pages, deploys to Vercel / Netlify / Cloudflare Pages / containers / FTP |
 
 None of them hold project-specific values. They read them from your
 project's `CLAUDE.md` and `vault/` (commands from `vault/running.md`, rules
-from `vault/hard-rules.md` …), so the same skill works in every project, and
-a project picks up an improvement from here when you refresh with `/feed`.
-When a skill needs something that isn't written down yet, it asks once and
+from `vault/hard-rules.md` …), so one improvement here reaches every project
+on the next update. When a skill needs something that isn't written down yet, it asks once and
 writes the answer where the next session will find it.
 The full list of what lives where is in
 [`project-facts.md`](plugins/bakjob-surdeg/skills/bootstrap/project-facts.md).
 
-Prefer plugins? Enable one in a project by hand:
+You can enable a plugin in a project by hand too:
 
 ```
 claude plugin install bakjob-web@bakjob --scope project

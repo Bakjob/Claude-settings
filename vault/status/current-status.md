@@ -12,7 +12,7 @@ how to install and use it.
 
 Six plugins under `plugins/` ([decision 0008](../decisions/0008-per-project-plugins-read-project-files.md)):
 
-- **`bakjob-surdeg`** (0.5.0, copied into every bootstrapped project): `bootstrap`, `feed`
+- **`bakjob-surdeg`** (0.6.0, installed per user): `bootstrap`, `feed`
   (change part of a setup later) and `doctor` (check a setup). Bootstrap has
   `SKILL.md` (flow), `questions.md` (13 interview rounds), `generate.md`
   (what each answer writes), `project-facts.md` (where the other plugins
@@ -42,11 +42,13 @@ for itself in `.claude/settings.json`.
 
 ## Just finished
 
-Bootstrap now copies skills and agents into the project's `.claude/` by
-default instead of installing plugins (#29,
-[decision 0009](../decisions/0009-bootstrap-copies-into-the-project.md));
-plugin install is a round 12 option. See
-[progress/2026-10-07-copy-into-project.md](../progress/2026-10-07-copy-into-project.md).
+Plugin install is the default again; copying skills and agents into the
+project is the round 12 option (#32,
+[decision 0010](../decisions/0010-plugin-install-is-the-default.md), which
+supersedes 0009). See
+[progress/2026-10-07-plugin-default-again.md](../progress/2026-10-07-plugin-default-again.md).
+
+Before that, bootstrap got copy mode (#29, decision 0009).
 
 Before that:
 

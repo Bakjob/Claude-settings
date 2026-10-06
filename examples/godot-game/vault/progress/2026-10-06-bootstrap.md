@@ -19,4 +19,3 @@ generated from; later `*-feed.md` entries record changes.
 | 10 | Vault / Folder / Extra / Obsidian | Full · vault/ · game-design/ · Yes |
 | 11 | Push back / Questions / Permissions / Deploy | Grill me · Question desk artifact · Generous · itch.io (`example/ember-hollow`) |
 | 12 | Plugins | `bakjob-core`, `bakjob-github`, `bakjob-game` |
-| 12 | Install mode | Copy (core 0.1.0, github 0.1.0, game 0.2.0, surdeg 0.5.0) |

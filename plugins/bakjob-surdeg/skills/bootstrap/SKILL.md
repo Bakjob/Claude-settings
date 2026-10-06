@@ -38,9 +38,9 @@ agents live in the other plugins of the library (`bakjob-core`,
 project values; they read them from the project's files as
 [project-facts.md](project-facts.md) describes. So bootstrap does two
 things: writes those files from the interview, and puts the right skills and
-agents into the project. By default it copies them into `TARGET/.claude/`, so
-the project depends on nothing outside its folder; it can install them as
-plugins instead (round 12).
+agents into the project. By default it enables them as plugins; it can copy
+them into `TARGET/.claude/` instead (round 12), so the project depends on
+nothing outside its folder.
 
 Confirm `TARGET` with the user in round 1 before writing anything.
 
