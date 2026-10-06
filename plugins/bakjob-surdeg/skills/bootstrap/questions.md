@@ -108,6 +108,8 @@ Then, as a plain message, the identifiers the chosen tracker needs:
 - **Q Formatter:** Run the formatter automatically after every edit Claude makes (hook)? [Yes · No]
 - **Q CI:** [GitHub Actions on every PR · No CI yet]
 - **Q Smoke test:** Is there (or will there soon be) a quick "does it still run" check? [Yes, describe the command · Not yet]
+- **if Game, Q Performance:** Target frame rate on the main platform?
+  [60 FPS on a mid-range PC · 30 FPS on mobile · 120+ FPS (fast-paced) · Not decided yet]
 - **if Game or Web app, Q Config file:** Keep every tunable value (durations, thresholds, costs, limits) in one config file?
   [Yes, at the path you suggest for the stack · No]
   *Suggest a path per stack, e.g. `src/config.ts`, a Godot autoload
@@ -149,10 +151,11 @@ marketplace. Build a proposal from the answer sheet, show it as a table
 | `bakjob-core` | `git-checkpoint`, `vault-update`, `new-decision`, `smoke-test`, `test-all-branches`, `artifact-question-desk`; agents `architect`, `test-runner`, `vault-scribe`, `smoke-test-runner`, `config-value-auditor` | almost always; skip only for a throwaway prototype with no git and no vault |
 | `bakjob-github` | `github-issues-workflow` | Tracker = GitHub Issues |
 | `bakjob-linear` | `linear-dev-workflow` | Tracker = Linear |
-| `bakjob-web` | `design-taste-frontend`, `redesign-skill`, `content-page-family`, `static-site-deploy`, `web-deploy`; agent `seo-a11y-auditor` | Website or Web app |
+| `bakjob-game` | `engine-conventions`, `playtest`, `game-release`; agent `performance-auditor` | Game |
+| `bakjob-web` | `design-taste-frontend`, `redesign-skill`, `content-page-family`, `static-site-deploy`, `web-deploy`, `visual-check`; agent `seo-a11y-auditor` | Website or Web app |
 
 Plugins are enabled per project, so a game project never loads the web
-tools. Facts a plugin needs that can't be known yet (a smoke test command
+tools (and a website never loads the game ones). Facts a plugin needs that can't be known yet (a smoke test command
 before there is code) are not invented: they go into the vault's open
 questions, and the skill asks for them the first time it's used.
 

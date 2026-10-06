@@ -32,8 +32,14 @@
     },
     {
       "name": "bakjob-web",
-      "description": "Web project tools: SEO, accessibility and performance audits, anti-slop frontend design, redesign audits, families of similar content pages, and deploys to Vercel, Netlify, Cloudflare Pages, containers or FTP hosting.",
+      "description": "Web project tools: SEO, accessibility and performance audits, before/after screenshots of UI changes, anti-slop frontend design, redesign audits, families of similar content pages, and deploys to Vercel, Netlify, Cloudflare Pages, containers or FTP hosting.",
       "source": "./plugins/bakjob-web",
+      "category": "productivity"
+    },
+    {
+      "name": "bakjob-game",
+      "description": "Game project tools: engine conventions for Godot, Unity, Phaser and Bevy, a performance auditor against your frame budget, playtests that split provable checks from feel, and releases to itch.io and Steam.",
+      "source": "./plugins/bakjob-game",
       "category": "productivity"
     }
   ]

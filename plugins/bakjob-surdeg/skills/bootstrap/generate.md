@@ -83,6 +83,9 @@ describes.
 - `DOCS/quality-targets.md`, if `bakjob-web` is enabled and a quality bar
   was chosen: the thresholds, WCAG level, meta title convention and JSON-LD
   schemas per page type.
+- `DOCS/quality-targets.md`, if `bakjob-game` is enabled: target
+  platforms, the frame rate from Performance (and the budget in ms), and
+  memory/load-time budgets marked "not set yet" until they are.
 - `DOCS/design/page-families.md`, if Page families = Yes: a heading per
   family with an empty route/arc table, for `content-page-family` to fill as
   pages get built.
@@ -205,7 +208,8 @@ format` (Unity/C#), `cargo fmt` (Rust).
 
 - `.gitignore` for the stack (node_modules, build output, `.env*`; Godot
   `.godot/`; Unity `Library/ Temp/ Obj/ Build/ Logs/ UserSettings/`; Rust
-  `target/`). Merge with an existing one.
+  `target/`; `.visual-check/` when `bakjob-web` is enabled). Merge with an
+  existing one.
 - If LFS = Yes: `.gitattributes` tracking the stack's binary asset types
   (images, audio, models, fonts). Check `git lfs version` first.
 - If Host is set and there is no repo yet: `git init`. Creating a remote
