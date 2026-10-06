@@ -5,7 +5,7 @@ Last updated: 2026-10-05
 ## What this repo is
 
 A personal library of reusable Claude Code configuration, installable as the
-Claude Code plugin `bakjob-kickstart` (marketplace `bakjob`). Its one live
+Claude Code plugin `bakjob-surdeg` (marketplace `bakjob`). Its one live
 skill, `bootstrap`, interviews the user about a new project and generates a
 filled-in setup from the templates in `templates/`: `CLAUDE.md`, agents,
 skills, a vault and `.claude/settings.json`. Pasting the repo into a project

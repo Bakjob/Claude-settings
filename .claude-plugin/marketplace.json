@@ -7,7 +7,7 @@
   },
   "plugins": [
     {
-      "name": "bakjob-kickstart",
+      "name": "bakjob-surdeg",
       "description": "Interview-driven project bootstrap: asks about version control, issue tracking, language, stack and workflow, then writes CLAUDE.md, .claude/agents, .claude/skills, vault/ and .claude/settings.json.",
       "source": "./",
       "category": "productivity"

@@ -1,6 +1,7 @@
-# bakjob-kickstart
+# bakjob-surdeg
 
-A [Claude Code](https://claude.com/claude-code) plugin that sets up a new
+A sourdough starter for your projects: a
+[Claude Code](https://claude.com/claude-code) plugin that sets up a new
 project for working with Claude. Instead of guessing, it **interviews you
 first**: stack, languages, version control, issue tracking, testing, docs,
 and how much Claude may do on its own. Then it writes a setup that matches
@@ -12,16 +13,26 @@ Built for web and game projects, usable for anything.
 
 ```
 /plugin marketplace add Bakjob/Claude-settings
-/plugin install bakjob-kickstart@bakjob
+/plugin install bakjob-surdeg@bakjob
 ```
 
-Then open a new (or existing) project folder and run:
+Run these inside Claude Code, in any session: marketplaces and plugins are
+installed for your user, not for one project. Then open a new (or existing)
+project folder and run:
 
 ```
-/bakjob-kickstart:bootstrap
+/bakjob-surdeg:bootstrap
 ```
 
-Update later with `/plugin marketplace update bakjob`.
+To get a newer version later, refresh the marketplace and update the plugin,
+then restart Claude Code:
+
+```
+/plugin marketplace update bakjob
+/plugin update bakjob-surdeg@bakjob
+```
+
+You never need to add the marketplace again.
 
 <details>
 <summary>Without installing the plugin</summary>
@@ -97,3 +108,7 @@ You can also copy any of them by hand into `.claude/agents/` or
 Issues and pull requests are welcome. `CLAUDE.md` describes how changes are
 made here (an issue per change, a PR per issue, how to verify), and
 [`vault/`](vault/) records why the library looks the way it does.
+
+## License
+
+[MIT](LICENSE)

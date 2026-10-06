@@ -3,7 +3,7 @@
 **Status:** Active
 
 **Decision:** The repo ships `.claude-plugin/plugin.json` (plugin
-`bakjob-kickstart`) and `.claude-plugin/marketplace.json` (marketplace
+`bakjob-surdeg`) and `.claude-plugin/marketplace.json` (marketplace
 `bakjob`), so it installs with `/plugin marketplace add Bakjob/Claude-settings`.
 The plugin's only live component is `skills/bootstrap/`. Every template
 (`CLAUDE-template.md`, agents, skills, the vault skeleton) moved to

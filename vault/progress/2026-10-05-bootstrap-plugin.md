@@ -3,7 +3,7 @@
 ## What changed
 
 - The repo is a Claude Code plugin: `.claude-plugin/plugin.json`
-  (`bakjob-kickstart`) and `.claude-plugin/marketplace.json` (`bakjob`).
+  (`bakjob-surdeg`) and `.claude-plugin/marketplace.json` (`bakjob`).
   `claude plugin validate .` passes. The first name tried, `claude-settings`,
   was rejected: plugin names starting with `claude-` are reserved.
 - All templates moved to `templates/` so the plugin only exposes
@@ -20,8 +20,9 @@
   `CLAUDE-template.md`, a no-tracker todo-list variant in `generate.md`.
 - README rewritten around the plugin and bootstrap.
 - GitHub issues #2-#7 created for the plan, with #7 as the overview.
-- Plugin renamed `bakjob-kickstart` (the user's pick, built on their GitHub
-  name). The repo got its own `CLAUDE.md` and a filled-in
+- Plugin renamed `bakjob-surdeg` (the user's pick: a sourdough starter for
+  projects, with their GitHub name), and the repo got an MIT license so
+  others can use it (#10). The repo got its own `CLAUDE.md` and a filled-in
   `.claude/skills/github-issues-workflow/`: GitHub issues and pull requests
   are the default here too
   ([decision 0007](../decisions/0007-github-flow-for-this-repo.md)), tracked

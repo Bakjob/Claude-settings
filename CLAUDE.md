@@ -5,7 +5,7 @@ into another project to bootstrap it, ignore this file and follow
 `BOOTSTRAP.md` instead.*
 
 Jakob's library of reusable Claude Code configuration, shipped as the plugin
-`bakjob-kickstart` (marketplace `bakjob`). Its `bootstrap` skill interviews
+`bakjob-surdeg` (marketplace `bakjob`). Its `bootstrap` skill interviews
 the user about a new project and generates that project's setup from
 `templates/`. `README.md` explains the layout; `vault/` is the library's own
 memory. Read `vault/status/current-status.md` before starting real work.
@@ -57,6 +57,11 @@ labels, closing) are in `.claude/skills/github-issues-workflow/`; use it.
   ♻️ rework, 📝 docs, 🔧 config) plus the issue number, e.g.
   `✨ #3 Bootstrap skill that interviews you`. The body says what changed and
   why, has `Refs #N`, and no test checklist (that goes on the issue).
+- **Bump `version` in `.claude-plugin/plugin.json`** in every PR that changes
+  what the plugin ships (`skills/`, `templates/`, the manifests). Installed
+  copies are cached by version, so a change without a bump may never reach
+  people who already installed it. Patch for fixes and wording, minor for new
+  templates or questions, major when a generated project's layout changes.
 - **Merging is always the user's click.** Say plainly when a PR is ready.
 - Commit messages: direct, what changed and why, no filler.
 
@@ -67,7 +72,7 @@ labels, closing) are in `.claude/skills/github-issues-workflow/`; use it.
 Run these before calling a change done:
 
 - `claude plugin validate .` passes.
-- `claude --plugin-dir . plugin details bakjob-kickstart` lists only the
+- `claude --plugin-dir . plugin details bakjob-surdeg` lists only the
   skills that are meant to be live (today: `bootstrap`). A template in the
   root `skills/` or `agents/` by mistake shows up here.
 - Templates under `templates/` keep their `[BRACKETED_PLACEHOLDERS]`;
