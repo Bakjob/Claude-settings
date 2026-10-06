@@ -1,6 +1,6 @@
 # Current status
 
-Last updated: 2026-10-05
+Last updated: 2026-10-06
 
 ## What this repo is
 
@@ -51,11 +51,11 @@ index, status files).
 
 ## Just finished
 
-Turned the repo into a plugin with an interview-driven `bootstrap` skill, and
-made the issue tracker a bootstrap choice instead of assuming Linear. See
-[progress/2026-10-05-bootstrap-plugin.md](../progress/2026-10-05-bootstrap-plugin.md).
-Planned and tracked as GitHub issues #2-#8. The repo now runs on GitHub
-Issues and PRs itself ([decision 0007](../decisions/0007-github-flow-for-this-repo.md)).
+PR #9 merged: the plugin (`bakjob-surdeg`), the bootstrap skill, the
+choosable tracker and this repo's own GitHub flow. Since then everything in
+the repo, issues included, is English (#11), see
+[progress/2026-10-06-english.md](../progress/2026-10-06-english.md). #3 and
+#4 wait in `in review` for a real bootstrap run.
 
 ## Not yet done
 

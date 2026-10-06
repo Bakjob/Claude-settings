@@ -10,8 +10,9 @@ the user about a new project and generates that project's setup from
 `templates/`. `README.md` explains the layout; `vault/` is the library's own
 memory. Read `vault/status/current-status.md` before starting real work.
 
-Talk to the user in the language they write in (usually Swedish). Files in
-the repo are written in English; GitHub issues are written in Swedish.
+Talk to the user in the language they write in. **Everything in the repo is
+English**, since it is public and meant for anyone: files, issues, PRs and
+commit messages.
 
 ---
 

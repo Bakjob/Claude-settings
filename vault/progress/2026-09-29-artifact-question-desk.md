@@ -13,10 +13,10 @@
 
 In the Space Hex project, Claude built a "Vision Desk" artifact to collect
 answers to open design questions. The user said it was the best way yet to
-be asked questions, and asked for every future artifact to use it: "jag
-gillar att jag högst upp ser hur många questions och ideer jag har kvar att
-svara på och en copy as text knapp. sen multiple choice frågor och ett new
-ideas formulär längst ner."
+be asked questions, and asked for every future artifact to use it: "I like seeing at the top how many
+questions and ideas I have left to answer, and a copy as text button. Then
+multiple choice questions, and a new ideas form at the bottom." (translated
+from Swedish)
 
 ## How it follows the library's rules
 
