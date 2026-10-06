@@ -1,6 +1,6 @@
 # Decisions
 
-Numbered, permanent records of calls about [PROJECT_NAME] that rule out an
+Numbered, permanent records of calls about Ember Hollow that rule out an
 alternative. Never renumber or delete a file. If a decision is reversed, add
 a new numbered file and point the old one's `Status` line at it.
 

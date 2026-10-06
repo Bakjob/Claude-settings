@@ -96,5 +96,9 @@ Run these before calling a change done:
   and in `vault/status/current-status.md`.
 - A skill that needs a new project fact adds it to `project-facts.md`, and
   bootstrap's `generate.md` writes it.
+- `examples/` shows what bootstrap produces. When a change alters what
+  bootstrap writes (a new fact, a renamed section, a new plugin), update both
+  examples to match. Their `CLAUDE.md` files describe those example projects
+  only; they are not instructions for this repo.
 - After a real chunk of work, add a `vault/progress/` entry and update
   `vault/status/current-status.md`, as `vault/README.md` describes.

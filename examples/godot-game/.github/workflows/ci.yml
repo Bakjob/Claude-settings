@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Lint and format check
+        run: |
+          pip install "gdtoolkit==4.*"
+          gdformat --check .
+          gdlint .
+      - name: Install Godot
+        run: |
+          wget -q https://github.com/godotengine/godot/releases/download/4.5-stable/Godot_v4.5-stable_linux.x86_64.zip
+          unzip -q Godot_v4.5-stable_linux.x86_64.zip
+          mv Godot_v4.5-stable_linux.x86_64 /usr/local/bin/godot
+      - name: Import
+        run: godot --headless --path . --import
+      - name: Unit tests (GUT)
+        run: godot --headless --path . -s addons/gut/gut_cmdln.gd -gexit

@@ -17,8 +17,12 @@ them.
 
 Start from `SKILL_DIR/CLAUDE-template.md` and write `TARGET/CLAUDE.md`:
 
-- Fill every placeholder from the answer sheet. `[HARD_RULES_FILE]` is
-  `hard-rules.md`, `[RUNNING_FILE]` is `running.md` (both created in step 3).
+- Fill every placeholder from the answer sheet. `[DOCS_DIR]` is the folder
+  name without a trailing slash where a path follows (`vault/hard-rules.md`,
+  not `vault//hard-rules.md`) and `` `vault/` `` in running text.
+  `[HARD_RULES_FILE]` is `hard-rules.md`, `[RUNNING_FILE]` is `running.md`
+  (both created in step 3). [examples/](https://github.com/Bakjob/Claude-settings/tree/main/examples)
+  shows two filled-in results.
 - **Language rule:** state the four languages separately (code, docs, UI,
   commits) plus the chat language. Drop the em dash line if the user dropped
   that rule.
@@ -48,7 +52,8 @@ Skip if Vault = None (then `DOCS` is just a folder for `hard-rules.md` and
 Copy `SKILL_DIR/vault-template/` to `TARGET/DOCS`, fill its placeholders, then:
 
 - **Light:** delete `progress/` mentions from `README.md` and don't create the
-  folder.
+  folder. Write the whole answer sheet to `DOCS/setup.md` instead, so `feed`
+  can start from it later.
 - **Full:** create `progress/YYYY-MM-DD-bootstrap.md` (today's date) with the
   whole answer sheet as a table, so a later session can see why the setup
   looks the way it does.
@@ -85,7 +90,8 @@ describes.
   schemas per page type.
 - `DOCS/quality-targets.md`, if `bakjob-game` is enabled: target
   platforms, the frame rate from Performance (and the budget in ms), and
-  memory/load-time budgets marked "not set yet" until they are.
+  memory/load-time budgets marked "not set yet" until they are, and an
+  `## Accessibility` part with the tier from Accessibility.
 - `DOCS/design/page-families.md`, if Page families = Yes: a heading per
   family with an empty route/arc table, for `content-page-family` to fill as
   pages get built.

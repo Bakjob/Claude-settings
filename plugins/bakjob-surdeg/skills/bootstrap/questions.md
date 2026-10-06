@@ -110,6 +110,8 @@ Then, as a plain message, the identifiers the chosen tracker needs:
 - **Q Smoke test:** Is there (or will there soon be) a quick "does it still run" check? [Yes, describe the command · Not yet]
 - **if Game, Q Performance:** Target frame rate on the main platform?
   [60 FPS on a mid-range PC · 30 FPS on mobile · 120+ FPS (fast-paced) · Not decided yet]
+- **if Game, Q Accessibility:** Which accessibility tier should the game aim for? (Game Accessibility Guidelines)
+  [Basic: remapping, subtitles, no color-only info, effect toggles · Intermediate · Advanced · Decide later]
 - **if Game or Web app, Q Config file:** Keep every tunable value (durations, thresholds, costs, limits) in one config file?
   [Yes, at the path you suggest for the stack · No]
   *Suggest a path per stack, e.g. `src/config.ts`, a Godot autoload
@@ -151,7 +153,7 @@ marketplace. Build a proposal from the answer sheet, show it as a table
 | `bakjob-core` | `git-checkpoint`, `vault-update`, `new-decision`, `smoke-test`, `test-all-branches`, `artifact-question-desk`; agents `architect`, `test-runner`, `vault-scribe`, `smoke-test-runner`, `config-value-auditor` | almost always; skip only for a throwaway prototype with no git and no vault |
 | `bakjob-github` | `github-issues-workflow` | Tracker = GitHub Issues |
 | `bakjob-linear` | `linear-dev-workflow` | Tracker = Linear |
-| `bakjob-game` | `engine-conventions`, `playtest`, `game-release`; agent `performance-auditor` | Game |
+| `bakjob-game` | `engine-conventions`, `playtest`, `game-release`, `game-accessibility`; agent `performance-auditor` | Game |
 | `bakjob-web` | `design-taste-frontend`, `redesign-skill`, `content-page-family`, `static-site-deploy`, `web-deploy`, `visual-check`; agent `seo-a11y-auditor` | Website or Web app |
 
 Plugins are enabled per project, so a game project never loads the web

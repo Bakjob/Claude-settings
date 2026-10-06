@@ -64,7 +64,9 @@ came from (a brief, an issue).
 
 The bar `performance-auditor` checks against: target platforms and minimum
 spec, target frame rate (the frame budget follows from it), memory and
-load-time budgets.
+load-time budgets. An `## Accessibility` part holds the target tier
+(Basic / Intermediate / Advanced, Game Accessibility Guidelines) and any
+platform requirement, used by `game-accessibility`.
 
 ## `DOCS/design/page-families.md` (web projects with repeated page types)
 

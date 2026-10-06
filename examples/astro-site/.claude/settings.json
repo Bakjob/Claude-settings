@@ -1,0 +1,45 @@
+{
+  "extraKnownMarketplaces": {
+    "bakjob": {
+      "source": {
+        "source": "github",
+        "repo": "Bakjob/Claude-settings"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "bakjob-core@bakjob": true,
+    "bakjob-web@bakjob": true
+  },
+  "permissions": {
+    "allow": [
+      "Bash(pnpm install:*)",
+      "Bash(pnpm build:*)",
+      "Bash(pnpm check:*)",
+      "Bash(pnpm lint:*)",
+      "Bash(pnpm format:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)"
+    ],
+    "deny": [
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Read(./.env)",
+      "Read(./.env.*)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path' | xargs -r pnpm exec prettier --write --ignore-unknown"
+          }
+        ]
+      }
+    ]
+  }
+}
